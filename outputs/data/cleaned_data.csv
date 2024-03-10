@@ -1,0 +1,664 @@
+calendar_year,cause,ranking,total_deaths,n
+2001,All other forms of chronic ...,1,1888,22
+2001,Acute myocardial infarction,2,1330,22
+2001,Malignant neoplasms of trac...,3,1095,22
+2001,Other chronic obstructive p...,4,664,22
+2001,"Stroke, not specified as he...",5,663,22
+2001,Atherosclerotic cardiovascu...,6,545,22
+2001,Malignant neoplasm of breast,7,426,22
+2001,Diabetes mellitus,8,397,22
+2001,Other malignant neoplasms o...,9,389,16
+2001,Malignant neoplasms of colon,10,386,22
+2001,Congestive heart failure,11,338,22
+2001,Malignant neoplasms of pros...,12,332,22
+2001,Alzheimer's disease,13,329,22
+2001,Organic dementia,14,280,22
+2001,Atherosclerosis,15,253,11
+2001,Malignant neoplasms ofpancreas,16,251,10
+2001,Pneumonia due to other or u...,17,245,22
+2001,Other cerebrovascular disea...,18,220,8
+2001,Renal failure,19,204,22
+2001,Non-Hodgkin's lymphoma,20,198,20
+2001,All other diseases of nervo...,21,176,22
+2001,Intracerebral and other int...,22,174,21
+2001,Intentional self-harm (suic...,23,163,22
+2001,Other and unspecified motor...,24,158,15
+2001,Conduction disorders and ca...,25,152,16
+2001,Aortic aneurysm and dissection,26,151,2
+2001,Malignant neoplasms of stomach,27,150,2
+2001,Other and unspecified land ...,28,147,1
+2001,Vascular disorders and obst...,29,145,21
+2001,All other and unspecified a...,30,140,12
+2001,All other diseases of respi...,30,140,19
+2001,Accidental poisoning by and...,30,140,10
+2002,All other forms of chronic ...,1,1847,22
+2002,Acute myocardial infarction,2,1294,22
+2002,Malignant neoplasms of trac...,3,1224,22
+2002,"Stroke, not specified as he...",4,779,22
+2002,Other chronic obstructive p...,5,680,22
+2002,Atherosclerotic cardiovascu...,6,603,22
+2002,Diabetes mellitus,7,439,22
+2002,Other malignant neoplasms o...,8,421,16
+2002,Malignant neoplasm of breast,9,405,22
+2002,Alzheimer's disease,10,399,22
+2002,Malignant neoplasms of pros...,11,346,22
+2002,Malignant neoplasms of colon,12,329,22
+2002,Congestive heart failure,13,319,22
+2002,Organic dementia,14,284,22
+2002,Atherosclerosis,15,281,11
+2002,Pneumonia due to other or u...,16,265,22
+2002,Malignant neoplasms ofpancreas,17,264,10
+2002,Other cerebrovascular disea...,18,238,8
+2002,Non-Hodgkin's lymphoma,19,203,20
+2002,Renal failure,20,194,22
+2002,Intracerebral and other int...,21,193,21
+2002,Conduction disorders and ca...,22,176,16
+2002,All other diseases of nervo...,23,172,22
+2002,Accidental poisoning by and...,24,168,10
+2002,Other and unspecified motor...,25,161,15
+2002,All other diseases of respi...,26,159,19
+2002,Intentional self-harm (suic...,27,152,22
+2002,Vascular disorders and obst...,28,150,21
+2002,All other and unspecified a...,29,138,12
+2002,Malignant neoplasms of stomach,30,132,2
+2003,All other forms of chronic ...,1,1749,22
+2003,Malignant neoplasms of trac...,2,1257,22
+2003,Acute myocardial infarction,3,1242,22
+2003,"Stroke, not specified as he...",4,760,22
+2003,Atherosclerotic cardiovascu...,5,709,22
+2003,Other chronic obstructive p...,6,670,22
+2003,Diabetes mellitus,7,455,22
+2003,Malignant neoplasm of breast,8,419,22
+2003,Other malignant neoplasms o...,9,394,16
+2003,Malignant neoplasms of colon,10,364,22
+2003,Malignant neoplasms of pros...,11,362,22
+2003,Alzheimer's disease,12,343,22
+2003,Pneumonia due to other or u...,13,328,22
+2003,Malignant neoplasms ofpancreas,14,294,10
+2003,Organic dementia,15,281,22
+2003,Congestive heart failure,16,277,22
+2003,Atherosclerosis,17,267,11
+2003,Other cerebrovascular disea...,18,253,8
+2003,Other and unspecified motor...,19,249,15
+2003,Renal failure,20,231,22
+2003,Poisoning by and exposure t...,21,215,13
+2003,Intracerebral and other int...,22,194,21
+2003,Non-Hodgkin's lymphoma,23,187,20
+2003,All other and unspecified a...,24,172,12
+2003,Conduction disorders and ca...,25,169,16
+2003,All other diseases of nervo...,26,165,22
+2003,Intentional self-harm (suic...,27,164,22
+2003,Vascular disorders and obst...,28,161,21
+2003,Aortic aneurysm and dissection,29,151,2
+2003,Pneumonitis due to food and...,30,146,10
+2004,All other forms of chronic ...,1,1739,22
+2004,Acute myocardial infarction,2,1337,22
+2004,Malignant neoplasms of trac...,3,1284,22
+2004,"Stroke, not specified as he...",4,719,22
+2004,Other chronic obstructive p...,5,677,22
+2004,Atherosclerotic cardiovascu...,6,650,22
+2004,Diabetes mellitus,7,438,22
+2004,Malignant neoplasms of colon,8,415,22
+2004,Pneumonia due to other or u...,9,390,22
+2004,Other malignant neoplasms o...,10,375,16
+2004,Malignant neoplasm of breast,11,359,22
+2004,Alzheimer's disease,12,342,22
+2004,Malignant neoplasms of pros...,13,331,22
+2004,Organic dementia,14,329,22
+2004,Malignant neoplasms ofpancreas,15,309,10
+2004,Other and unspecified motor...,16,296,15
+2004,Atherosclerosis,17,278,11
+2004,Congestive heart failure,18,277,22
+2004,Poisoning by and exposure t...,19,256,13
+2004,Renal failure,20,245,22
+2004,Other cerebrovascular disea...,21,232,8
+2004,Non-Hodgkin's lymphoma,22,200,20
+2004,Conduction disorders and ca...,23,191,16
+2004,Intracerebral and other int...,24,179,21
+2004,Vascular disorders and obst...,25,177,21
+2004,Intentional self-harm (suic...,26,168,22
+2004,All other diseases of nervo...,27,162,22
+2004,Pneumonitis due to food and...,28,158,10
+2004,All other and unspecified a...,29,155,12
+2004,Malignant neoplasms of brain,30,153,6
+2005,All other forms of chronic ...,1,1742,22
+2005,Malignant neoplasms of trac...,2,1309,22
+2005,Acute myocardial infarction,3,1270,22
+2005,Other chronic obstructive p...,4,762,22
+2005,"Stroke, not specified as he...",5,742,22
+2005,Atherosclerotic cardiovascu...,6,643,22
+2005,Diabetes mellitus,7,472,22
+2005,Organic dementia,8,458,22
+2005,Other malignant neoplasms o...,9,419,16
+2005,Malignant neoplasms of colon,10,412,22
+2005,Malignant neoplasm of breast,11,394,22
+2005,Pneumonia due to other or u...,12,366,22
+2005,Malignant neoplasms of pros...,13,341,22
+2005,Alzheimer's disease,14,337,22
+2005,Other and unspecified motor...,15,310,15
+2005,Atherosclerosis,16,291,11
+2005,Malignant neoplasms ofpancreas,17,287,10
+2005,Congestive heart failure,18,277,22
+2005,Renal failure,19,268,22
+2005,Poisoning by and exposure t...,20,234,13
+2005,Conduction disorders and ca...,21,206,16
+2005,All other diseases of nervo...,22,200,22
+2005,Non-Hodgkin's lymphoma,23,198,20
+2005,Vascular disorders and obst...,24,181,21
+2005,Other cerebrovascular disea...,25,179,8
+2005,Intracerebral and other int...,26,177,21
+2005,All other diseases of respi...,27,172,19
+2005,All other and unspecified a...,28,171,12
+2005,Intentional self-harm (suic...,29,170,22
+2005,Pneumonitis due to food and...,30,161,10
+2006,All other forms of chronic ...,1,1671,22
+2006,Malignant neoplasms of trac...,2,1297,22
+2006,Acute myocardial infarction,3,1207,22
+2006,Atherosclerotic cardiovascu...,4,809,22
+2006,Other chronic obstructive p...,5,783,22
+2006,"Stroke, not specified as he...",6,717,22
+2006,Organic dementia,7,655,22
+2006,Pneumonia due to other or u...,8,450,22
+2006,Diabetes mellitus,9,427,22
+2006,Other malignant neoplasms o...,10,423,16
+2006,Malignant neoplasm of breast,11,388,22
+2006,Malignant neoplasms of colon,12,386,22
+2006,Alzheimer's disease,13,376,22
+2006,Malignant neoplasms of pros...,14,352,22
+2006,Congestive heart failure,15,327,22
+2006,Malignant neoplasms ofpancreas,16,311,10
+2006,Other and unspecified motor...,17,290,15
+2006,Renal failure,18,261,22
+2006,Poisoning by and exposure t...,19,240,13
+2006,Pneumonitis due to food and...,20,220,10
+2006,All other diseases of nervo...,21,201,22
+2006,Other cerebrovascular disea...,22,200,8
+2006,Non-Hodgkin's lymphoma,23,191,20
+2006,Atherosclerosis,24,189,11
+2006,Vascular disorders and obst...,25,185,21
+2006,All other and unspecified a...,26,181,12
+2006,All other diseases of respi...,27,167,19
+2006,Intracerebral and other int...,27,167,21
+2006,Conduction disorders and ca...,29,161,16
+2006,Intentional self-harm (suic...,30,158,22
+2007,All other forms of chronic ...,1,1727,22
+2007,Malignant neoplasms of trac...,2,1357,22
+2007,Acute myocardial infarction,3,1185,22
+2007,Other chronic obstructive p...,4,829,22
+2007,Atherosclerotic cardiovascu...,5,716,22
+2007,Organic dementia,6,654,22
+2007,"Stroke, not specified as he...",6,654,22
+2007,Diabetes mellitus,8,464,22
+2007,Other malignant neoplasms o...,9,462,16
+2007,Pneumonia due to other or u...,10,454,22
+2007,Malignant neoplasms of colon,11,422,22
+2007,Malignant neoplasm of breast,12,418,22
+2007,Alzheimer's disease,13,344,22
+2007,Malignant neoplasms of pros...,14,343,22
+2007,Malignant neoplasms ofpancreas,15,333,10
+2007,Congestive heart failure,16,304,22
+2007,Renal failure,17,281,22
+2007,Other and unspecified motor...,18,256,15
+2007,Conduction disorders and ca...,19,239,16
+2007,Pneumonitis due to food and...,20,230,10
+2007,Non-Hodgkin's lymphoma,21,216,20
+2007,Poisoning by and exposure t...,22,206,13
+2007,All other diseases of nervo...,23,204,22
+2007,Atherosclerosis,24,200,11
+2007,Intracerebral and other int...,25,173,21
+2007,Intentional self-harm (suic...,26,171,22
+2007,All other diseases of respi...,27,166,19
+2007,Other cerebrovascular disea...,28,165,8
+2007,Malignant neoplasms of brain,29,164,6
+2007,Vascular disorders and obst...,30,162,21
+2008,All other forms of chronic ...,1,1820,22
+2008,Malignant neoplasms of trac...,2,1376,22
+2008,Acute myocardial infarction,3,1198,22
+2008,Other chronic obstructive p...,4,889,22
+2008,Organic dementia,5,813,22
+2008,Atherosclerotic cardiovascu...,6,804,22
+2008,"Stroke, not specified as he...",7,690,22
+2008,Pneumonia due to other or u...,8,457,22
+2008,Diabetes mellitus,9,453,22
+2008,Alzheimer's disease,10,449,22
+2008,Other malignant neoplasms o...,11,436,16
+2008,Malignant neoplasms of colon,12,422,22
+2008,Malignant neoplasm of breast,13,401,22
+2008,Malignant neoplasms of pros...,14,361,22
+2008,Renal failure,15,326,22
+2008,Congestive heart failure,16,314,22
+2008,Malignant neoplasms ofpancreas,17,310,10
+2008,Poisoning by and exposure t...,18,252,13
+2008,Other and unspecified motor...,19,249,15
+2008,Conduction disorders and ca...,20,244,16
+2008,Pneumonitis due to food and...,21,223,10
+2008,Non-Hodgkin's lymphoma,22,215,20
+2008,Intentional self-harm (suic...,23,204,22
+2008,Vascular disorders and obst...,24,202,21
+2008,All other diseases of nervo...,25,197,22
+2008,Intracerebral and other int...,26,194,21
+2008,Atherosclerosis,26,194,11
+2008,All other diseases of respi...,28,181,19
+2008,Septicemia,29,179,8
+2008,Other cerebrovascular disea...,30,177,8
+2009,All other forms of chronic ...,1,1834,22
+2009,Malignant neoplasms of trac...,2,1447,22
+2009,Acute myocardial infarction,3,1116,22
+2009,Atherosclerotic cardiovascu...,4,848,22
+2009,Organic dementia,5,847,22
+2009,Other chronic obstructive p...,6,835,22
+2009,"Stroke, not specified as he...",7,687,22
+2009,Malignant neoplasms of colon,8,454,22
+2009,Other malignant neoplasms o...,9,412,16
+2009,Malignant neoplasm of breast,10,408,22
+2009,Diabetes mellitus,10,408,22
+2009,Alzheimer's disease,12,400,22
+2009,Pneumonia due to other or u...,13,392,22
+2009,Malignant neoplasms of pros...,14,363,22
+2009,Malignant neoplasms ofpancreas,15,340,10
+2009,Congestive heart failure,16,319,22
+2009,Renal failure,17,287,22
+2009,Poisoning by and exposure t...,18,284,13
+2009,All other diseases of nervo...,19,230,22
+2009,Conduction disorders and ca...,20,227,16
+2009,Other and unspecified motor...,21,214,15
+2009,Intentional self-harm (suic...,22,213,22
+2009,Pneumonitis due to food and...,23,209,10
+2009,All other diseases of respi...,24,205,19
+2009,Non-Hodgkin's lymphoma,25,204,20
+2009,Intracerebral and other int...,26,202,21
+2009,Vascular disorders and obst...,27,196,21
+2009,Atherosclerosis,28,186,11
+2009,Septicemia,29,185,8
+2009,All other and unspecified a...,30,172,12
+2010,All other forms of chronic ...,1,1737,22
+2010,Malignant neoplasms of trac...,2,1431,22
+2010,Acute myocardial infarction,3,1053,22
+2010,Organic dementia,4,939,22
+2010,Atherosclerotic cardiovascu...,5,898,22
+2010,Other chronic obstructive p...,6,826,22
+2010,"Stroke, not specified as he...",7,686,22
+2010,Malignant neoplasms of colon,8,468,22
+2010,Malignant neoplasm of breast,9,393,22
+2010,Alzheimer's disease,10,390,22
+2010,Diabetes mellitus,10,390,22
+2010,Other malignant neoplasms o...,12,386,16
+2010,Malignant neoplasms of pros...,13,370,22
+2010,Pneumonia due to other or u...,14,338,22
+2010,Poisoning by and exposure t...,14,338,13
+2010,Malignant neoplasms of panc...,16,318,2
+2010,Congestive heart failure,17,299,22
+2010,Renal failure,18,289,22
+2010,Pneumonitis due to food and...,19,282,10
+2010,Conduction disorders and ca...,20,249,16
+2010,Intentional self-harm (suic...,21,210,22
+2010,All other diseases of nervo...,22,198,22
+2010,Non-Hodgkin's lymphoma,23,197,20
+2010,Other and unspecified motor...,24,196,15
+2010,Intracerebral and other int...,25,184,21
+2010,Vascular disorders and obst...,25,184,21
+2010,Atherosclerosis,27,179,11
+2010,Septicemia,28,177,8
+2010,Malignant neoplasms of esop...,29,166,2
+2010,Malignant neoplasms of brain,30,161,6
+2011,All other forms of chronic ...,1,1828,22
+2011,Malignant neoplasms of trac...,2,1445,22
+2011,Organic dementia,3,1022,22
+2011,Acute myocardial infarction,4,984,22
+2011,Other chronic obstructive p...,5,969,22
+2011,Atherosclerotic cardiovascu...,6,817,22
+2011,"Stroke, not specified as he...",7,693,22
+2011,Diabetes mellitus,8,490,22
+2011,Malignant neoplasms of colon,9,443,22
+2011,Malignant neoplasm of breast,10,416,22
+2011,Other malignant neoplasms o...,11,409,16
+2011,Pneumonia due to other or u...,12,393,22
+2011,Alzheimer's disease,13,371,22
+2011,Malignant neoplasms ofpancreas,14,341,10
+2011,Malignant neoplasms of pros...,15,333,22
+2011,Congestive heart failure,16,322,22
+2011,Pneumonitis due to food and...,17,294,10
+2011,Poisoning by and exposure t...,18,282,13
+2011,Septicemia,19,251,8
+2011,Conduction disorders and ca...,20,248,16
+2011,Renal failure,21,246,22
+2011,All other diseases of nervo...,22,210,22
+2011,Intracerebral and other int...,23,193,21
+2011,Intentional self-harm (suic...,24,192,22
+2011,Other and unspecified motor...,25,187,15
+2011,Non-Hodgkin's lymphoma,26,181,20
+2011,Vascular disorders and obst...,27,179,21
+2011,Atherosclerosis,28,174,11
+2011,All other and unspecified a...,29,169,12
+2011,All other diseases of respi...,30,166,19
+2012,All other forms of chronic ...,1,1586,22
+2012,Malignant neoplasms of trac...,2,1362,22
+2012,Organic dementia,3,1113,22
+2012,Acute myocardial infarction,4,1054,22
+2012,Other chronic obstructive p...,5,941,22
+2012,Atherosclerotic cardiovascu...,6,824,22
+2012,"Stroke, not specified as he...",7,659,22
+2012,Diabetes mellitus,8,473,22
+2012,Malignant neoplasms of colon,9,464,22
+2012,Other malignant neoplasms o...,10,438,16
+2012,Pneumonia due to other or u...,11,410,22
+2012,Malignant neoplasm of breast,12,405,22
+2012,Poisoning by and exposure t...,13,362,13
+2012,Malignant neoplasms of panc...,14,351,2
+2012,Malignant neoplasms of pros...,15,348,22
+2012,Alzheimer's disease,16,344,22
+2012,Not Stated,17,343,1
+2012,Pneumonitis due to food and...,18,315,10
+2012,Congestive heart failure,19,314,22
+2012,Conduction disorders and ca...,20,277,16
+2012,Septicemia,21,243,8
+2012,Hypertensive heart disease,22,240,11
+2012,Intentional self-harm (suic...,23,232,22
+2012,All other diseases of nervo...,24,229,22
+2012,Renal failure,25,226,22
+2012,Non-Hodgkin's lymphoma,26,220,20
+2012,All other diseases of respi...,27,214,19
+2012,Intracerebral and other int...,28,212,21
+2012,Other and unspecified motor...,29,199,15
+2012,Vascular disorders and obst...,30,186,21
+2013,All other forms of chronic ...,1,1757,22
+2013,Malignant neoplasms of trac...,2,1494,22
+2013,Organic dementia,3,1361,22
+2013,Acute myocardial infarction,4,1068,22
+2013,Other chronic obstructive p...,5,995,22
+2013,Atherosclerotic cardiovascu...,6,828,22
+2013,"Stroke, not specified as he...",7,672,22
+2013,Diabetes mellitus,8,486,22
+2013,Malignant neoplasms of colon,9,472,22
+2013,Malignant neoplasm of breast,10,426,22
+2013,Pneumonia due to other or u...,11,401,22
+2013,Malignant neoplasms of  pan...,12,391,10
+2013,Malignant neoplasms of pros...,13,388,22
+2013,Poisoning by and exposure t...,14,376,13
+2013,Congestive heart failure,15,352,22
+2013,Other malignant neoplasms o...,16,333,16
+2013,Alzheimer's disease,17,329,22
+2013,Hypertensive heart disease,18,327,11
+2013,Conduction disorders and ca...,19,296,16
+2013,Intentional self-harm (suic...,20,259,22
+2013,All other diseases of nervo...,21,257,22
+2013,All other diseases of respi...,22,237,19
+2013,Septicemia,23,235,8
+2013,Renal failure,24,233,22
+2013,Non-Hodgkin's lymphoma,25,227,20
+2013,Vascular disorders and obst...,26,215,21
+2013,Intracerebral and other int...,27,196,21
+2013,Malignant neoplasms of esop...,28,192,2
+2013,Other and unspecified motor...,29,187,15
+2013,All other and unspecified a...,30,186,12
+2014,All other forms of chronic ...,1,1682,22
+2014,Malignant neoplasms of trac...,2,1499,22
+2014,Organic dementia,3,1491,22
+2014,Acute myocardial infarction,4,1030,22
+2014,Other chronic obstructive p...,5,937,22
+2014,Atherosclerotic cardiovascu...,6,766,22
+2014,"Stroke, not specified as he...",7,631,22
+2014,( Blank ),8,625,3
+2014,Diabetes mellitus,9,503,22
+2014,Poisoning by and exposure t...,10,440,13
+2014,Malignant neoplasms of colon,11,436,22
+2014,Malignant neoplasms of  pan...,12,435,10
+2014,Malignant neoplasm of breast,13,416,22
+2014,Malignant neoplasms of pros...,14,409,22
+2014,Pneumonia due to other or u...,15,387,22
+2014,Congestive heart failure,16,333,22
+2014,Conduction disorders and ca...,17,324,16
+2014,Hypertensive heart disease,18,323,11
+2014,Other malignant neoplasms o...,19,313,16
+2014,Alzheimer's disease,20,299,22
+2014,All other diseases of nervo...,21,253,22
+2014,Intentional self-harm (suic...,22,245,22
+2014,All other diseases of respi...,22,245,19
+2014,Renal failure,24,231,22
+2014,Intracerebral and other int...,25,215,21
+2014,Malignant neoplasms of rect...,26,193,5
+2014,Vascular disorders and obst...,27,192,21
+2014,Septicemia,28,190,8
+2014,Alcoholic liver disease,29,189,6
+2014,All other and unspecified a...,29,189,12
+2015,All other forms of chronic ...,1,1605,22
+2015,Organic dementia,2,1540,22
+2015,Malignant neoplasms of trac...,3,1510,22
+2015,Other chronic obstructive p...,4,1071,22
+2015,Acute myocardial infarction,5,1031,22
+2015,Atherosclerotic cardiovascu...,6,891,22
+2015,"Stroke, not specified as he...",7,701,22
+2015,Diabetes mellitus,8,527,22
+2015,Malignant neoplasm of breast,9,471,22
+2015,Malignant neoplasms of colon,10,442,22
+2015,Pneumonia due to other or u...,11,433,22
+2015,Malignant neoplasms of  pan...,12,393,10
+2015,Poisoning by and exposure t...,13,379,13
+2015,Malignant neoplasms of pros...,14,376,22
+2015,Congestive heart failure,15,345,22
+2015,Conduction disorders and ca...,16,344,16
+2015,Other malignant neoplasms o...,17,323,16
+2015,Alzheimer's disease,18,313,22
+2015,Intentional self-harm (suic...,19,307,22
+2015,Hypertensive heart disease,20,301,11
+2015,All other diseases of respi...,21,278,19
+2015,Renal failure,22,271,22
+2015,( Blank ),23,267,3
+2015,All other diseases of nervo...,24,264,22
+2015,Septicemia,25,243,8
+2015,Non-Hodgkin's lymphoma,26,221,20
+2015,Intracerebral and other int...,27,220,21
+2015,Other and unspecified motor...,28,203,15
+2015,Vascular disorders and obst...,29,201,21
+2015,Accidental poisoning by and...,30,201,10
+2016,Organic dementia,1,1664,22
+2016,All other forms of chronic ...,2,1626,22
+2016,Malignant neoplasms of trac...,3,1547,22
+2016,Acute myocardial infarction,4,1102,22
+2016,Other chronic obstructive p...,5,1090,22
+2016,Atherosclerotic cardiovascu...,6,885,22
+2016,Accidental poisoning by and...,7,664,10
+2016,"Stroke, not specified as he...",8,613,22
+2016,Diabetes mellitus,9,502,22
+2016,Malignant neoplasms of colon,10,477,22
+2016,Malignant neoplasm of breast,11,459,22
+2016,Malignant neoplasms of pros...,12,421,22
+2016,Malignant neoplasms of  pan...,13,410,10
+2016,Pneumonia due to other or u...,14,398,22
+2016,Other malignant neoplasms o...,15,368,16
+2016,Congestive heart failure,16,352,22
+2016,Conduction disorders and ca...,17,342,16
+2016,Hypertensive heart disease,18,331,11
+2016,Alzheimer's disease,19,305,22
+2016,Intentional self-harm (suic...,20,287,22
+2016,All other diseases of nervo...,21,283,22
+2016,Renal failure,22,272,22
+2016,All other diseases of respi...,23,271,19
+2016,Intracerebral and other int...,24,248,21
+2016,Parkinson's disease,25,226,7
+2016,Non-Hodgkin's lymphoma,26,224,20
+2016,Malignant neoplasms of brain,27,202,6
+2016,Other and unspecified motor...,28,200,15
+2016,Mental and behavioral disor...,29,193,1
+2016,Malignant neoplasms of rect...,30,193,5
+2017,Organic dementia,1,1906,22
+2017,All other forms of chronic ...,2,1678,22
+2017,Malignant neoplasms of trac...,3,1620,22
+2017,Other chronic obstructive p...,4,1118,22
+2017,Acute myocardial infarction,5,1028,22
+2017,Atherosclerotic cardiovascu...,6,817,22
+2017,Accidental poisoning by and...,7,810,10
+2017,"Stroke, not specified as he...",8,606,22
+2017,Diabetes mellitus,9,584,22
+2017,Malignant neoplasms of colon,10,466,22
+2017,Malignant neoplasm of breast,11,450,22
+2017,Pneumonia due to other or u...,12,449,22
+2017,Malignant neoplasms of  pan...,13,439,10
+2017,Malignant neoplasms of pros...,14,430,22
+2017,Congestive heart failure,15,374,22
+2017,Intentional self-harm (suic...,16,327,22
+2017,All other diseases of respi...,17,323,19
+2017,Hypertensive heart disease,18,304,11
+2017,All other diseases of nervo...,19,297,22
+2017,Alzheimer's disease,20,294,22
+2017,Atrial fibrillation and atr...,21,259,6
+2017,Non-Hodgkin's lymphoma,21,259,20
+2017,Parkinson's disease,23,234,7
+2017,Renal failure,24,220,22
+2017,Malignant neoplasms of rect...,25,211,5
+2017,Intracerebral and other int...,26,209,21
+2017,Malignant neoplasms of brain,27,208,6
+2017,Vascular disorders and obst...,27,208,21
+2017,Alcoholic liver disease,29,202,6
+2017,"Malignant neoplasm, primary...",30,189,2
+2018,Organic dementia,1,1986,22
+2018,All other forms of chronic ...,2,1788,22
+2018,Malignant neoplasms of trac...,3,1594,22
+2018,Other chronic obstructive p...,4,1111,22
+2018,Acute myocardial infarction,5,1071,22
+2018,Accidental poisoning by and...,6,833,10
+2018,Atherosclerotic cardiovascu...,7,745,22
+2018,Diabetes mellitus,8,577,22
+2018,"Stroke, not specified as he...",9,566,22
+2018,( Blank ),10,550,3
+2018,Malignant neoplasms of colon,11,495,22
+2018,Malignant neoplasm of breast,12,464,22
+2018,Malignant neoplasms of  pan...,13,452,10
+2018,Pneumonia due to other or u...,14,436,22
+2018,Malignant neoplasms of pros...,15,398,22
+2018,Congestive heart failure,16,347,22
+2018,All other diseases of nervo...,17,314,22
+2018,Intentional self-harm (suic...,18,308,22
+2018,Alzheimer's disease,19,300,22
+2018,All other diseases of respi...,20,286,19
+2018,Hypertensive heart disease,21,261,11
+2018,Atrial fibrillation and atr...,22,248,6
+2018,Intracerebral and other int...,23,237,21
+2018,Renal failure,24,217,22
+2018,Parkinson's disease,25,215,7
+2018,Malignant neoplasms of rect...,26,214,5
+2018,Non-Hodgkin's lymphoma,26,214,20
+2018,Alcoholic liver disease,28,213,6
+2018,Fibrosis and cirrhosis of l...,29,211,4
+2018,Vascular disorders and obst...,30,206,21
+2019,Organic dementia,1,1997,22
+2019,All other forms of chronic ...,2,1886,22
+2019,Malignant neoplasms of trac...,3,1523,22
+2019,Other chronic obstructive p...,4,1159,22
+2019,Acute myocardial infarction,5,1061,22
+2019,Atherosclerotic cardiovascu...,6,678,22
+2019,Accidental poisoning by and...,7,677,10
+2019,"Stroke, not specified as he...",8,602,22
+2019,Diabetes mellitus,9,569,22
+2019,Other ill-defined and unkno...,10,522,4
+2019,Malignant neoplasms of colon,11,482,22
+2019,Malignant neoplasms of  pan...,12,476,10
+2019,Malignant neoplasm of breast,13,440,22
+2019,Malignant neoplasms of pros...,14,440,22
+2019,Pneumonia due to other or u...,15,432,22
+2019,Congestive heart failure,16,430,22
+2019,All other diseases of nervo...,17,332,22
+2019,Alzheimer's disease,18,330,22
+2019,All other diseases of respi...,19,305,19
+2019,Intentional self-harm (suic...,20,302,22
+2019,Atrial fibrillation and atr...,21,271,6
+2019,Hypertensive heart disease,22,263,11
+2019,Renal failure,23,254,22
+2019,Vascular disorders and obst...,24,237,21
+2019,Non-Hodgkin's lymphoma,25,233,20
+2019,Intracerebral and other int...,26,228,21
+2019,All other and unspecified a...,27,224,12
+2019,Malignant neoplasms of brain,28,220,6
+2019,Parkinson's disease,29,219,7
+2019,Malignant neoplasms of rect...,30,217,5
+2020,Organic dementia,1,2081,22
+2020,All other forms of chronic ...,2,1897,22
+2020,Malignant neoplasms of trac...,3,1563,22
+2020,Other ill-defined and unkno...,4,1464,4
+2020,Other chronic obstructive p...,5,1178,22
+2020,"COVID-19, virus identified",6,1084,3
+2020,Acute myocardial infarction,7,1067,22
+2020,Accidental poisoning by and...,8,920,10
+2020,Diabetes mellitus,9,743,22
+2020,Atherosclerotic cardiovascu...,10,670,22
+2020,"Stroke, not specified as he...",11,622,22
+2020,Malignant neoplasm of breast,12,493,22
+2020,Malignant neoplasms of  pan...,13,466,10
+2020,Malignant neoplasms of colon,14,465,22
+2020,Malignant neoplasms of pros...,15,434,22
+2020,Pneumonia due to other or u...,16,408,22
+2020,Congestive heart failure,17,387,22
+2020,Intentional self-harm (suic...,18,327,22
+2020,Alzheimer's disease,19,326,22
+2020,All other diseases of nervo...,20,318,22
+2020,All other diseases of respi...,21,307,19
+2020,Atrial fibrillation and atr...,22,282,6
+2020,Parkinson's disease,23,279,7
+2020,Alcoholic liver disease,24,273,6
+2020,Non-Hodgkin's lymphoma,25,263,20
+2020,Renal failure,26,250,22
+2020,Intracerebral and other int...,27,246,21
+2020,Hypertensive heart disease,28,237,11
+2020,Fibrosis and cirrhosis of l...,29,233,4
+2020,Vascular disorders and obst...,30,232,21
+2021,Other ill-defined and unkno...,1,3362,4
+2021,Organic dementia,2,2135,22
+2021,"COVID-19, virus identified",3,1950,3
+2021,All other forms of chronic ...,4,1939,22
+2021,Malignant neoplasms of trac...,5,1552,22
+2021,Acute myocardial infarction,6,1075,22
+2021,Other chronic obstructive p...,7,1028,22
+2021,Diabetes mellitus,8,728,22
+2021,"Stroke, not specified as he...",9,612,22
+2021,Accidental poisoning by and...,10,604,10
+2021,Malignant neoplasm of breast,11,526,22
+2021,Malignant neoplasms of colon,12,513,22
+2021,Malignant neoplasms of  pan...,13,493,10
+2021,Malignant neoplasms of pros...,14,470,22
+2021,Atherosclerotic cardiovascu...,15,463,22
+2021,Congestive heart failure,16,403,22
+2021,All other diseases of nervo...,17,376,22
+2021,All other diseases of respi...,18,319,19
+2021,Alzheimer's disease,19,310,22
+2021,Pneumonia due to other or u...,20,309,22
+2021,Alcoholic liver disease,21,298,6
+2021,Atrial fibrillation and atr...,22,297,6
+2021,Parkinson's disease,23,280,7
+2021,Vascular disorders and obst...,24,265,21
+2021,Renal failure,25,258,22
+2021,Fibrosis and cirrhosis of l...,26,253,4
+2021,Hypertensive heart disease,26,253,11
+2021,Non-Hodgkin's lymphoma,28,243,20
+2021,Intentional self-harm (suic...,29,242,22
+2021,All other and unspecified a...,30,239,12
+NA,This report of Vital Statis...,NA,NA,1
+2022,Organic dementia,1,2377,22
+2022,All other forms of chronic ...,2,2098,22
+2022,Other ill-defined and unkno...,3,1714,4
+2022,"COVID-19, virus identified",4,1547,3
+2022,Malignant neoplasms of trac...,5,1523,22
+2022,Acute myocardial infarction,6,1240,22
+2022,Accidental poisoning by and...,7,1200,10
+2022,Other chronic obstructive p...,8,1183,22
+2022,Diabetes mellitus,9,730,22
+2022,"Stroke, not specified as he...",10,650,22
+2022,Atherosclerotic cardiovascu...,11,582,22
+2022,Malignant neoplasm of breast,12,509,22
+2022,Malignant neoplasms of  pan...,13,488,10
+2022,Malignant neoplasms of pros...,13,488,22
+2022,Congestive heart failure,15,481,22
+2022,Malignant neoplasms of colon,16,452,22
+2022,Pneumonia due to other or u...,17,412,22
+2022,All other diseases of nervo...,18,407,22
+2022,All other diseases of respi...,19,346,19
+2022,Alzheimer's disease,20,335,22
+2022,Hypertensive heart disease,21,332,11
+2022,Atrial fibrillation and atr...,22,319,6
+2022,Parkinson's disease,23,315,7
+2022,Intentional self-harm (suic...,24,293,22
+2022,Alcoholic liver disease,25,288,6
+2022,"Malignant neoplasm, primary...",26,285,2
+2022,Fibrosis and cirrhosis of l...,27,283,4
+2022,Renal failure,28,276,22
+2022,Intracerebral and other int...,29,275,21
+2022,Vascular disorders and obst...,30,257,21
