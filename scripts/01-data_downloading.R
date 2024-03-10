@@ -18,7 +18,7 @@ library(readr)
 
 
 
-#### download ####
+#### download data ####
 raw_data <-
   read_csv(
     "https://open.alberta.ca/dataset/03339dc5-fb51-4552-97c7-853688fc428d/resource/3e241965-fee3-400e-9652-07cfbf0c0bda/download/deaths-leading-causes.csv",
@@ -33,7 +33,7 @@ raw_data <-
 
 
 
-#### Save data ####
+#### save data ####
 write_csv(
   x = raw_data,
   file = "inputs/data/raw_data.csv"
