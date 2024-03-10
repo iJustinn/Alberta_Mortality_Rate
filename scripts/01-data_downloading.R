@@ -10,11 +10,8 @@
 
 #### Workspace setup ####
 # setup all libraries
-library(opendatatoronto)
-library(tidyverse)
-library(janitor)
-library(dplyr)
 library(readr)
+library(tidyverse)
 
 
 
