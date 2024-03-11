@@ -32,4 +32,9 @@ filtered_data |>
   facet_wrap(vars(cause), dir = "v", ncol = 1) +
   theme(legend.position = "none")
 
+pp_check(cause_of_death_alberta_poisson) +
+  theme(legend.position = "bottom")
+
+pp_check(cause_of_death_alberta_neg_binomial) +
+  theme(legend.position = "bottom")
 
