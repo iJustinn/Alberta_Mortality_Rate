@@ -14,7 +14,7 @@
 
 
 #### load data ####
-filtered_data <- read_csv("outputs/data/raw_data.csv")
+filtered_data <- read_csv("outputs/data/filtered_data.csv.csv")
 
 
 
