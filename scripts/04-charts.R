@@ -10,6 +10,7 @@
 
 #### Workspace setup ####
 # setup all libraries
+library(readr)
 library(knitr)
 library(janitor)
 library(ggplot2)

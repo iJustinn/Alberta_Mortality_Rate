@@ -10,7 +10,9 @@
 
 #### Workspace setup ####
 # setup all libraries
-
+library(readr)
+library(rstanarm)
+library(modelsummary)
 
 
 #### load data ####
