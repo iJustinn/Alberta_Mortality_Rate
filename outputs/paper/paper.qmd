@@ -19,14 +19,20 @@ bibliography: references.bib
 #| echo: false
 
 # load packages
-library(tidyverse)
-library(ggplot2)
-library(janitor)
-library(dplyr)
-library(readr)
-library(knitr)
-library(kableExtra)
-library(reshape2)
+packages <- c("tidyverse", "boot", "broom.mixed", "collapse", "dataverse", "gutenbergr", "janitor", "knitr", "marginaleffects", "modelsummary", "rstanarm")
+
+# Function to check and install missing packages
+install_and_load <- function(packages) {
+  for (package in packages) {
+    if (!require(package, character.only = TRUE)) {
+      install.packages(package)
+      library(package, character.only = TRUE)
+    }
+  }
+}
+
+# Call the function with the list of packages
+install_and_load(packages)
 ```
 
 ```{r}
@@ -34,21 +40,17 @@ library(reshape2)
 #| echo: false
 
 # read in data
-file_path <- "../../inputs/data/raw_data.csv"
-data <- read_csv(file_path, show_col_types = FALSE)
+file_path <- "../../outputs/data/filtered_data.csv"
+filtered_data <- read_csv(file_path, show_col_types = FALSE)
 ```
 
 
 
 # Introduction
 
-Regret, defined as an emotional response to the memory of past decisions or actions that one wishes had been different, significantly impacts our daily lives [@citeRegret]. This paper delves into the factors that influence the intensity of regret, with a specific focus on social norms and past behaviors. Understanding these elements is essential for a clearer grasp of the decision-making process and the emotions that result from it.
+Alberta, a province known for its vibrant culture and dynamic economy, faces ongoing challenges in public health, with mortality rates reflecting a complex interplay of socioeconomic, environmental, and healthcare factors. This paper aims to delve into the intricacies of mortality rates in Alberta, exploring the trends, causes, and determinants that shape the province's public health landscape. By leveraging data on causes of death, including chronic diseases, accidents, and emerging health threats, we provide a detailed analysis of mortality patterns and their implications for Alberta's healthcare system and policy-making.
 
-We categorize social norms into two main types: descriptive norms, which concern beliefs about common behaviors within a group, and injunctive norms, which relate to beliefs about what behaviors are approved or disapproved by others [@citeUNICEF]. Our research involves two experiments aimed at assessing the effect of these norms on regret. The first experiment looks into the role of these norms in the context of deciding whether or not to pick up a hitchhiker, while the second addresses the consequences of selecting an unconventional driving route.
-
-The findings from these experiments reveal that unusual or unexpected events tend to provoke stronger feelings of regret than routine behaviors. However, the influence of both injunctive and descriptive social norms on the level of regret was found to be less significant. These results highlight how deviations from usual behavior, particularly when in conflict with social norms, can intensify feelings of regret. This insight is crucial for a better understanding of the cognitive processes involved in evaluating decisions and the emotional aftermath.
-
-The organization of this paper is methodical and clear. We start with an overview of the theoretical framework concerning social norms and their connection to regret in the introduction. The methodology and findings from our experiments are detailed in the subsequent data section. The discussion section then addresses the implications of our results, outlines the limitations of the study, and suggests directions for future research.
+This paper utilize data from open.alberta.ca as bases.
 
 # Data {#sec-data}
 
@@ -56,249 +58,100 @@ Data used in this paper was cleaned and processed with the programming language 
 
 ## Source
 
-The data utilized in this study replicates experimental findings from the research documented in @citeOriginalPaper. This original research itself is a replication of three seminal experiments designed to explore the influence of past behaviors on regret. The initial two experiments were pioneered by Kahneman and Miller in 1986, with the third experiment conducted by Miller and McFarland in the same year. Furthermore, the original study expands upon these foundational experiments. For the first experiment, it introduces an additional parameter to measure the overall emotional reaction of participants, considering the impact of both types of social norms. In the second experiment, a "Luck" measure was added to determine if the way people estimate probabilities influences their sense of what is typical. The expansion of the third experiment is not covered in this paper, as our examination is limited to the initial two experiments.
+
 
 ## Method
-In the first experiment, participants were presented with a well-known scenario by Kahneman and Miller, often referred to as the hitchhiker scenario: "Mr. Jones almost never takes hitch-hikers in his car. Yesterday he gave a man a ride and was robbed. Mr. Smith frequently takes hitch-hikers in his car. Yesterday he gave a man a ride and was robbed" (@citeOriginalPaper). The original study included three comprehension questions to confirm participants' understanding of the scenario, which we will not detail here. To assess the influence of injunctive and descriptive social norms, participants were asked: "Whose behavior do you think is more common in society? Mr.Jones(1)/Mr.Smith(2)" and "Whose behavior do you think will be more criticized by others in society? Mr.Jones(1)/Mr.Smith(2)" respectively. And the level of regret is also assessed by asking the question "Who do you expect will experience greater regret over the episode? Mr.Jones(1)/Mr.Smith(2)" (@citeOriginalPaper). The additional measure of negative effect is measured by asking the question "Contemplating your previous answers about this scenario and factoring in both Mr.Jones and Mr.Smith personal routines and your perceptions of social norms and possible social criticism, who do you think overall experienced more negative feelings about the decision to take a hitch-hiker that day? Mr.Jones(1)/Mr.Smith(2)".
 
-The second experiment involved another scenario by Kahneman and Miller, known as the car accident scenario: "Mr. Adams was involved in an accident when driving home after work on his regular route. Mr. White was involved in a similar accident when driving on a route that he only takes when he wants a change of scenery" (@citeOriginalPaper). As with the first experiment, comprehension questions were included but are not discussed here. The feeling of regret is assessed by asking the question "Who is more upset over the accident? Mr.Adams(1)/Mr.White(2)". The "Luck" measure is examined by the question "Which of the two do you think is less lucky? Mr.Adams(1)/Mr.White(2)".
+
 
 ## Attibutes
-The survey dataset initially contained 52 variables. After excluding variables related to the third experiment and comprehension questions, the dataset was narrowed down to 6 key variables for analysis. For the first experiment, 'Sc1_regret' represents participant responses to the regret question. 'Sc1_socnorms1' and 'Sc1_socnorms2' correspond to the assessment of injunctive and descriptive social norms, respectively. 'Sc1_combinednorms' is an additional variable introduced to measure the overall negative emotional response. As mentioned above, 1 in the dataset represents the Mr.Jones, where 2 represents Mr.Smith. 
 
-In relation to the second experiment, 'Sc2_regret' denotes the responses to the regret question. The 'Sc2_lucky' variable is an added measure corresponding to participants' perceptions of luck as introduced in the "Luck" question. And 1 stands for Mr.Adams, where 2 is Mr.White.
-
-The top ten rows of filtered data with variables renamed is shown in @tbl-filtereddata.
-
-```{r}
-#| message: false
-#| echo: false
-#| warning: false
-#| fig-pos: 'h'
-#| label: tbl-filtereddata
-#| tbl-cap: top 10 rows of filtered data
-
-example_data <- data %>%
-  select(Sc1_regret, sc1_socnorms1, sc1_socnorms2, sc1_combinednorms, Sc2_regret, Sc2_lucky) %>%
-  rename(
-    "Experiment 1 regret" = Sc1_regret,
-    "Injuctive norms" = sc1_socnorms1,
-    "Descriptive norms" = sc1_socnorms2,
-    "Negative effect" = sc1_combinednorms,
-    "Experiment 2 regret" = Sc2_regret,
-    "Luck" = Sc2_lucky
-  ) %>%
-  head(10)  # Selecting only the top 10 rows for the table
-
-# Generating the table using kable and kableExtra for styling
-example_kable <- kable(example_data, format = "latex", booktabs = TRUE, align='c') %>% # align the text in the middle
-  kable_styling(full_width = FALSE, font_size = 7) 
-example_kable
-```
 
 
 # Results
-## Experiment 1
+
+
 
 ```{r}
 #| message: false
 #| echo: false
 #| warning: false
 #| fig-pos: 'h'
-#| label: tbl-experiment1
-#| tbl-cap: Result of experiment 1
+#| label: fig-poisson_model
+#| fig-cap: result for poisson model
 
-# Filter the data to drop NA values
-data_filtered_1 <- data %>%
-  filter(!is.na(Sc1_regret) & !is.na(sc1_socnorms1) & !is.na(sc1_socnorms2) & !is.na(sc1_combinednorms))
+#### poisson model ####
+cause_of_death_alberta_poisson <-
+  stan_glm(
+    total_deaths ~ cause,
+    data = filtered_data,
+    family = poisson(link = "log"),
+    seed = 123
+  )
 
-# Calculate the total counts and counts for Mr.Jones (1) and Mr.Smith (2)
-total_counts_1 <- nrow(data_filtered_1)
-mr_jones_counts <- sum(data_filtered_1$Sc1_regret == 1)
-mr_smith_counts <- total_counts_1 - mr_jones_counts
+#### negative binomial model ####
+cause_of_death_alberta_neg_binomial <-
+  stan_glm(
+    total_deaths ~ cause,
+    data = filtered_data,
+    family = neg_binomial_2(link = "log"),
+    seed = 123
+  )
 
-# Calculate the counts and percentages for Mr.Jones
-mr_jones_data <- data.frame(
-  Group = "Mr.Jones(exception)",
-  Regret = paste(mr_jones_counts, "(", round((mr_jones_counts / total_counts_1) * 100, 1), "%)", sep = ""),
-  Injunctive = paste(sum(data_filtered_1$sc1_socnorms1 == 1), "(", round((sum(data_filtered_1$sc1_socnorms1 == 1) / total_counts_1) * 100, 1), "%)", sep = ""),
-  Descriptive = paste(sum(data_filtered_1$sc1_socnorms2 == 1), "(", round((sum(data_filtered_1$sc1_socnorms2 == 1) / total_counts_1) * 100, 1), "%)", sep = ""),
-  `Negative Effect` = paste(sum(data_filtered_1$sc1_combinednorms == 1), "(", round((sum(data_filtered_1$sc1_combinednorms == 1) / total_counts_1) * 100, 1), "%)", sep = "")
-)
-
-# Calculate the counts and percentages for Mr.Smith
-mr_smith_data <- data.frame(
-  Group = "Mr.Smith(routine)",
-  Regret = paste(mr_smith_counts, "(", round((mr_smith_counts / total_counts_1) * 100, 1), "%)", sep = ""),
-  Injunctive = paste(sum(data_filtered_1$sc1_socnorms1 == 2), "(", round((sum(data_filtered_1$sc1_socnorms1 == 2) / total_counts_1) * 100, 1), "%)", sep = ""),
-  Descriptive = paste(sum(data_filtered_1$sc1_socnorms2 == 2), "(", round((sum(data_filtered_1$sc1_socnorms2 == 2) / total_counts_1) * 100, 1), "%)", sep = ""),
-  `Negative Effect` = paste(sum(data_filtered_1$sc1_combinednorms == 2), "(", round((sum(data_filtered_1$sc1_combinednorms == 2) / total_counts_1) * 100, 1), "%)", sep = "")
-)
-
-# Combine the data for Mr. Jones and Mr. Smith into one dataframe
-combined_data <- rbind(mr_jones_data, mr_smith_data)
-
-# Now use kable to create the table with the combined data
-kable_output <- kable(combined_data, "latex", booktabs = TRUE) %>%
-  kable_styling(full_width = FALSE, font_size = 7)
-
-kable_output
-```
-
-```{r}
-#| message: false
-#| echo: false
-#| warning: false
-#| fig-pos: 'h'
-#| label: fig-experiment1bar
-#| fig-cap: Bar plot of experiment 1
-
-smith_regret_p <- round((mr_smith_counts / total_counts_1) * 100, 1)
-smith_injunctive_p <- round((sum(data_filtered_1$sc1_socnorms1 == 2) / total_counts_1) * 100, 1)
-smith_descriptive_p <- round((sum(data_filtered_1$sc1_socnorms2 == 2) / total_counts_1) * 100, 1)
-smith_negative_p <- round((sum(data_filtered_1$sc1_combinednorms == 2) / total_counts_1) * 100, 1)
-jones_regret_p <- round((mr_jones_counts / total_counts_1) * 100, 1)
-jones_injunctive_p <- round((sum(data_filtered_1$sc1_socnorms1 == 1) / total_counts_1) * 100, 1)
-jones_descriptive_p <- round((sum(data_filtered_1$sc1_socnorms2 == 1) / total_counts_1) * 100, 1)
-jones_negative_p <- round((sum(data_filtered_1$sc1_combinednorms == 1) / total_counts_1) * 100, 1)
-
-# Create a data frame with the provided data
-df <- data.frame(
-  Category = c("Regret", "Injunctive Social Norm", "Descriptive Social Norm", "Negative Affect"),
-  Smith_Routine = c(smith_regret_p, smith_injunctive_p, smith_descriptive_p, smith_negative_p),
-  Jones_Exception = c(jones_regret_p, jones_injunctive_p, jones_descriptive_p, jones_negative_p)
-)
-
-# Convert the data from wide to long format
-data_long <- melt(df, id.vars = "Category", variable.name = "Condition", value.name = "Percentage")
-
-# Reorder the factor levels of Category so that 'Regret' comes first
-data_long$Category <- factor(data_long$Category, levels = c("Regret", "Injunctive Social Norm", "Descriptive Social Norm", "Negative Affect"), 
-                             labels = c("Regret", "Social Norm\nInjunctive", 
-                                        "Social Norm\nDescriptive", "Negative\nAffect"))
-
-# Create the bar plot with the categories reordered
-ggplot(data_long, aes(x = Category, y = Percentage, fill = Condition)) +
-  geom_bar(stat = "identity", position = position_dodge(width = 0.9), width = 0.7) +
-  scale_fill_manual(values = c("Smith_Routine" = "grey", "Jones_Exception" = "#505050"), 
-                    labels = c("Mr.Smith(Routine)", "Mr.Jones(Exception)")) +
-  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 20)) +
+filtered_data |>
+  ggplot(aes(x = calendar_year, y = total_deaths, color = cause)) +
+  geom_line() +
   theme_minimal() +
-  labs(x = "", y = "Percentage", fill = "Condition") +
-  theme(axis.text.x = element_text(hjust = 1, vjust = 1, colour = "black",size = 9), 
-    legend.position = "top", legend.title = element_blank())
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "Year", y = "Annual number of deaths in Alberta") +
+  facet_wrap(vars(cause), dir = "v", ncol = 1) +
+  theme(legend.position = "none")
+
+pp_check(cause_of_death_alberta_poisson) +
+  theme(legend.position = "bottom")
+
+pp_check(cause_of_death_alberta_neg_binomial) +
+  theme(legend.position = "bottom")
+
 ```
 
-@tbl-experiment1 and @fig-experiment1bar display results from experiment 1. Mr. Jones, who performs an action that is an exception to his routine, reports a higher regret level of 92.1%. Most participants rated Mr.Jones' behavior to be more common (descriptive) as he never gave ride to hitchhiker (95.3) and therefore to be less criticized (injunctive) by the society (9.4%). Mr.Jones is thought to experience more negative feelings about the decision made that day combining previous answers to the two social norms (92.7%). Mr.Smith, associated with routine behavior, shows markedly lower levels in these aspects, participants rated 7.9%, 4.7%, 90.6% and 7.3% for regret, descriptive social norm, injunctive social norm, and negative effect respectively. Indicating that although Mr.Smith is thought to be criticized more in the society, he would experience less regret and negative effect overall. 
 
-
-The disparity in responses suggests that individuals who engage in behaviors that are not typical for them (Mr. Jones) are more likely to experience and be perceived as having stronger regret and more negative emotional responses. The consistency in this pattern across different measures indicates a robust finding, aligning with psychological theories that predict increased emotional consequences for actions that deviate from one's own or society's expectations. The bar plot @fig-experiment1bar quantitatively illustrates these findings. Mr. Jones's experiences with regret and negative affect are visually represented by significantly taller bars compared to Mr. Smith's, reflecting the numerical data.
-
-## Experiment 2
 
 ```{r}
 #| message: false
 #| echo: false
 #| warning: false
 #| fig-pos: 'h'
-#| label: tbl-experiment2
-#| tbl-cap: Result of experiment 2
+#| label: tbl-summary
+#| tbl-cap: summary of modeling
 
-# Filter the data to drop NA values
-data_filtered_2 <- data %>%
-  filter(!is.na(Sc2_regret) & !is.na(Sc2_random_1) & !is.na(Sc2_random_2) & !is.na(Sc2_lucky))
+name_mapping <- 
+  c("causeAll other forms of chronic ..."
+    = "other chronic",
+    "causeMalignant neoplasms of trac..."
+    = "neoplasms",
+    "causeOrganic dementia"
+    = "dementia",
+    "causeOther chronic obstructive p..."
+    = "obstructive pulmonary"
+  )
 
-# Calculate the total counts and counts for Mr.Adams (1) and Mr.White (2)
-total_counts_2 <- nrow(data_filtered_2)
-mr_adams_counts <- sum(data_filtered_2$Sc2_regret == 1)
-mr_white_counts <- total_counts_2 - mr_adams_counts
-
-# Calculate the counts and percentages for Mr.Adams
-mr_adams_data <- data.frame(
-  Group = "Mr.Adams(routine)",
-  Regret = paste(mr_adams_counts, "(", round((mr_adams_counts / total_counts_2) * 100, 1), "%)", sep = ""),
-  Luck = paste(sum(data_filtered_2$Sc2_lucky == 1), "(", round((sum(data_filtered_2$Sc2_lucky == 1) / total_counts_2) * 100, 1), "%)", sep = "")
+modelsummary(
+  list(
+    "Poisson" = cause_of_death_alberta_poisson,
+    "Negative binomial" = cause_of_death_alberta_neg_binomial
+  ),
+  coef_map = name_mapping
 )
-
-# Calculate the counts and percentages for Mr. White
-mr_white_data <- data.frame(
-  Group = "Mr.White(exception)",
-  Regret = paste(mr_white_counts, "(", round((mr_white_counts / total_counts_2) * 100, 1), "%)", sep = ""),
-  Luck = paste(sum(data_filtered_2$Sc2_lucky == 2), "(", round((sum(data_filtered_2$Sc2_lucky == 2) / total_counts_2) * 100, 1), "%)", sep = "")
-)
-
-# Combine the data for Mr. Jones and Mr. Smith into one dataframe
-combined_data <- rbind(mr_adams_data, mr_white_data)
-
-# Now use kable to create the table with the combined data
-kable_output <- kable(combined_data, "latex", booktabs = TRUE) %>%
-  kable_styling(full_width = FALSE, font_size = 7)
-
-kable_output
 ```
-
-```{r}
-#| message: false
-#| echo: false
-#| warning: false
-#| fig-pos: 'h'
-#| label: fig-experiment2bar
-#| fig-cap: Bar plot of experiment 2
-
-adams_regret_p <- round((mr_adams_counts / total_counts_2) * 100, 1)
-adams_luck_p <- round((sum(data_filtered_2$Sc2_lucky == 1) / total_counts_2) * 100, 1)
-white_regret_p <- round((sum(data_filtered_2$Sc2_regret == 2) / total_counts_2) * 100, 1)
-white_luck_p <- round((sum(data_filtered_2$Sc2_lucky == 2) / total_counts_2) * 100, 1)
-
-# Create a data frame with the provided data
-data <- data.frame(
-  Category = c("Regret", "Luck"),
-  Adams_Routine = c(adams_regret_p, adams_luck_p),
-  White_Exception = c(white_regret_p, white_luck_p)
-)
-
-# Convert the data from wide to long format
-data_long <- melt(data, id.vars = "Category", variable.name = "Condition", value.name = "Percentage")
-
-# Reorder the factor levels of Category so that 'Regret' comes first
-data_long$Category <- factor(data_long$Category, levels = c("Regret", "Luck"))
-
-# Create the bar plot with the categories reordered
-ggplot(data_long, aes(x = Category, y = Percentage, fill = Condition)) +
-  geom_bar(stat = "identity", position = position_dodge(width = 0.9), width = 0.7) +
-  scale_fill_manual(values = c("Adams_Routine" = "grey", "White_Exception" = "#505050"), 
-                    labels = c("Mr.Adams(Routine)", "Mr.White(Exception)")) +
-  scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 20)) + # label the y-axis every 20%
-  theme_minimal() +
-  labs(x = "", y = "Percentage", fill = "Condition") +
-  theme(axis.text.x = element_text(hjust = 1, vjust = 1, colour = "black",size = 9), 
-    legend.position = "top", legend.title = element_blank())
-```
-
-@tbl-experiment2 and @fig-experiment2bar illustrate the outcomes of experiment 2, which addresses perceptions of regret and luck in decision-making under varying conditions of routine and exception.
-
-Mr. Adams, who represents routine behavior, exhibits a regret level of 18.8%, suggesting that participants view routine actions as less regrettable. His luck perception stands at 32.9%, indicating that participants may see routine choices as less influenced by luck. On the contrary, Mr. White, who represents an exception to routine, is associated with a markedly higher regret level at 81.2%. This suggests that non-routine actions are perceived as significantly more regrettable. Furthermore, his luck perception is at 67.1%, which could reflect a belief that deviations from routine are more susceptible to chance and less within an individual's control.
-
-@fig-experiment2bar graphically accentuates these findings, with much higher height bars for Mr.White in terms of regret and luck. This visual comparison conveys the statistical differences and underscores the paper's exploration of the psychological impacts of routine versus exceptional decisions. This visualization complements the statistical data by providing an immediate, comparative view of the emotional weight and perceived randomness assigned to each individual's experience.
-
 
 
 
 # Discussion
 
-## Replication and estimand
 
 
-## Measurement validity
-
-
-## Ethical Considerations and Bias
-
-
-## Limitations and Future Research
-
-
-## Conclusion
+# Conclusion
 
 
 
