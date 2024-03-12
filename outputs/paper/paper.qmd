@@ -40,8 +40,13 @@ install_and_load(packages)
 #| echo: false
 
 # read in data
-file_path <- "../../outputs/data/filtered_data.csv"
-filtered_data <- read_csv(file_path, show_col_types = FALSE)
+file_path_0 <- "../../inputs/data/raw_data.csv"
+file_path_1 <- "../../outputs/data/filtered_data.csv"
+file_path_2 <- "../../outputs/data/cleaned_data.csv"
+
+raw_data <- read_csv(file_path_0, show_col_types = FALSE)
+filtered_data <- read_csv(file_path_1, show_col_types = FALSE)
+cleaned_data <- read_csv(file_path_2, show_col_types = FALSE)
 ```
 
 
@@ -62,6 +67,29 @@ Data used in this paper was cleaned and processed with the programming language 
 
 ## Method
 
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-pos: 'h'
+#| label: tbl-causes
+#| tbl-cap: top 8 major causes in 2019
+
+#### check top 8 major causes in 2019 ####
+cleaned_data |>
+  filter(
+    calendar_year == 2019,
+    ranking <= 8
+  ) |>
+  mutate(total_deaths = format(total_deaths, big.mark = ",")) |>
+  kable(
+    col.names = c("Year", "Cause", "Ranking", "Deaths", "Years"),
+    align = c("l", "r", "r", "r", "r"),
+    digits = 0, booktabs = TRUE, linesep = ""
+  )
+
+```
+
 
 
 ## Attibutes
@@ -70,15 +98,8 @@ Data used in this paper was cleaned and processed with the programming language 
 
 # Results
 
-
-
 ```{r}
-#| message: false
-#| echo: false
-#| warning: false
-#| fig-pos: 'h'
-#| label: fig-poisson_model
-#| fig-cap: result for poisson model
+#| include: false
 
 #### poisson model ####
 cause_of_death_alberta_poisson <-
@@ -97,6 +118,16 @@ cause_of_death_alberta_neg_binomial <-
     family = neg_binomial_2(link = "log"),
     seed = 123
   )
+
+```
+
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-pos: 'h'
+#| label: fig-poisson_model
+#| fig-cap: result for poisson model
 
 filtered_data |>
   ggplot(aes(x = calendar_year, y = total_deaths, color = cause)) +
