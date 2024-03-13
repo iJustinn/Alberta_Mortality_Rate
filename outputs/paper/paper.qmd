@@ -1,6 +1,6 @@
 ---
-title: "Title"
-subtitle: "Subtitle"
+title: "Modeling Mortality Trends in Alberta"
+subtitle: "A Quantitative Approach to Public Health Dynamics"
 author: 
   - Ziheng Zhong
 thanks: "Code and data are available at: https://github.com/iJustinn/Alberta_Mortality_Rate.git"
@@ -61,7 +61,11 @@ Data used in this paper was cleaned and processed with the programming language 
 
 ## Source
 
-This paper utilize data from open.alberta.ca [@citeDatasource] as bases.
+In the pursuit of understanding and modeling mortality trends within Alberta, our study primarily utilizes the "Leading Causes of Death" dataset made available by the Alberta Open Government Portal. This comprehensive data source offers an extensive overview of mortality statistics across the province, categorized by various causes of death. The Alberta Open Government Portal, a key initiative for promoting transparency and public engagement, hosts this dataset at open.alberta.ca [@citeDatasource], providing open access to valuable health-related data.
+
+The "Leading Causes of Death" dataset encompasses a detailed compilation of death counts and mortality rates spanning multiple years. It includes categorizations by age, sex, and specific causes of death, ranging from chronic diseases to accidents and emergent health threats. This granularity allows for a nuanced analysis of mortality trends, facilitating the identification of prevalent health issues and potential public health interventions.
+
+The selection of this data source was driven by its credibility, comprehensiveness, and relevance to our research objectives. Being an official government resource, the dataset ensures reliability and accuracy, crucial for the validity of our analytical models. The dataset's extensive coverage of demographic and cause-specific mortality information enables a thorough exploration of the factors influencing mortality rates in Alberta. Furthermore, the data's organization and accessibility significantly aid in the efficient processing and modeling of mortality trends.
 
 ## Method
 
@@ -88,11 +92,9 @@ cleaned_data |>
 
 ```
 
+Our analysis commenced with the essential task of refining the raw dataset. The initial phase involved cleaning and standardizing the dataset's variable names to enhance readability and analytical efficiency. We also aggregated the data to quantify the prevalence of each cause of death, thereby streamlining the dataset for more focused analysis. A critical aspect of our methodology was the isolation of data from the year 2019. This strategic choice was made to examine mortality trends immediately before the onset of the COVID-19 pandemic. By focusing on this specific year, we aimed to establish a baseline understanding of mortality patterns unaffected by the pandemic's impact. Within this scope, as showing in @tbl-causes, we identified and prioritized the top 8 causes of mortality, based on their significance and prevalence.
 
-
-## Attibutes
-
-
+Building on the refined dataset, our analysis further narrowed to investigate the top 5 causes of mortality in 2019. This deliberate focus allowed us to concentrate our efforts on the most impactful health challenges faced by Alberta before the pandemic. We applied statistical models to fit these mortality trends, seeking to identify underlying patterns and determinants. This approach was aimed at uncovering insights that could inform public health strategies and interventions, contributing to a more nuanced understanding of mortality dynamics in the province.
 
 # Results
 
@@ -119,13 +121,15 @@ cause_of_death_alberta_neg_binomial <-
 
 ```
 
+## Data Trend
+
 ```{r}
 #| message: false
 #| echo: false
 #| warning: false
 #| fig-pos: 'h'
-#| label: fig-poisson_model
-#| fig-cap: result for poisson model
+#| label: fig-result
+#| fig-cap: Trend for Top 5 Causes
 
 filtered_data |>
   ggplot(aes(x = calendar_year, y = total_deaths, color = cause)) +
@@ -134,17 +138,16 @@ filtered_data |>
   scale_color_brewer(palette = "Set1") +
   labs(x = "Year", y = "Annual number of deaths in Alberta") +
   facet_wrap(vars(cause), dir = "v", ncol = 1) +
-  theme(legend.position = "none")
-
-pp_check(cause_of_death_alberta_poisson) +
-  theme(legend.position = "bottom")
-
-pp_check(cause_of_death_alberta_neg_binomial) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "none",
+        axis.text.y = element_text(size = rel(0.7)))
 
 ```
 
+Results in the @fig-result displays the annual number of deaths in Alberta for the top five causes in 2019 unveils distinct trends for each cause over approximately two decades. The data suggest a relatively stable trend in deaths from acute myocardial infarction, with a small rise that may indicate a steady prevalence of risk factors or an equilibrium between advancing medical interventions and demographic shifts. Conversely, the increasing trajectory seen in deaths due to chronic diseases points to a potential escalation in lifestyle-related health issues or could reflect the demographic realities of an aging population.
 
+Particularly notable is the sharp increase in deaths attributed to organic dementia, surging upwards more markedly in the latter half of the time span. This trend could signify heightened awareness and improved diagnostic capabilities, alongside the impact of an aging society. Meanwhile, deaths from malignant neoplasms related to the respiratory system display minor fluctuations, hinting at persistent challenges in cancer prevention, detection, and treatment. The upward trend in chronic obstructive pulmonary disease-related mortality could be linked to environmental factors or historic smoking patterns, underscoring the pressing need for robust public health policies and effective healthcare strategies.
+
+## Modeling
 
 ```{r}
 #| message: false
@@ -174,7 +177,37 @@ modelsummary(
 )
 ```
 
+Then the @tbl-summary summarizes the coefficients of both models built to fit the mortality trend in Alberta, offering a comparison of their estimations for the top causes of mortality. In both models, "other chronic" conditions and "neoplasms" exhibit positive coefficients, suggesting these causes of death have an increasing trend over time. Meanwhile, "obstructive pulmonary" diseases show a negative relationship in both models, indicating a decreasing trend in mortality rates. The consistency across both models reinforces the reliability of our findings.
 
+As depicted by the graphs for the Poisson (@fig-poisson_model) and negative binomial models (@fig-negative_binomial_model), the diagnostic plots further elucidate the model fits. The negative binomial model, appears to capture the dispersion in the data more effectively than the Poisson model, which is evident in two plots. The spread of the simulated lines (y_rep) around the observed data (y) suggests that the negative binomial model may accommodate the overdispersion present in the data, which is a common characteristic in count data such as mortality rates.
+
+The presence of multiple peaks in the second plot's simulated data distributions indicates potential subgroups within the data or non-linearity in the mortality trends that the Poisson model may not be accounting for. Such patterns underscore the importance of considering different model structures when dealing with complex datasets. These graphical diagnostics not only affirm the adequacy of the negative binomial model over the Poisson model for this particular dataset but also highlight the necessity of thorough model checking in the process of statistical analysis.
+
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-pos: 'h'
+#| label: fig-poisson_model
+#| fig-cap: Poisson Model
+
+pp_check(cause_of_death_alberta_poisson) +
+  theme(legend.position = "bottom")
+
+```
+
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-pos: 'h'
+#| label: fig-negative_binomial_model
+#| fig-cap: Negative Binomial Model
+
+pp_check(cause_of_death_alberta_neg_binomial) +
+  theme(legend.position = "bottom")
+
+```
 
 # Discussion
 
