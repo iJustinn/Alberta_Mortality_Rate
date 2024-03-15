@@ -55,7 +55,13 @@ summarized_top_5_cause_data <- read_csv(file_path_3, show_col_types = FALSE)
 
 # Introduction
 
-Alberta, a province known for its vibrant culture and dynamic economy, faces ongoing challenges in public health, with mortality rates reflecting a complex interplay of socioeconomic, environmental, and healthcare factors. This paper aims to delve into the intricacies of mortality rates in Alberta, exploring the trends, causes, and determinants that shape the province's public health landscape. By leveraging data on causes of death, including chronic diseases, accidents, and emerging health threats, we provide a detailed analysis of mortality patterns and their implications for Alberta's healthcare system and policy-making.
+# Introduction
+
+Alberta, often celebrated for its vibrant culture and robust economy, grapples with the complexities of public health challenges that reverberate across its diverse population. In the face of these challenges, mortality rates emerge as a telling metric, offering insights into the health outcomes shaped by an interwoven fabric of socioeconomic conditions, environmental factors, and healthcare system efficacy. The significance of these mortality rates transcends mere numbers; they mirror the collective well-being of the community and serve as a barometer for the effectiveness of public health policies and interventions.
+
+The exploration of mortality trends within this province is not merely an academic exercise; it is an imperative assessment in an era where healthcare systems worldwide are continually tested by emerging threats and chronic conditions alike. As such, this paper endeavors to dissect the evolving narrative of Alberta's mortality statistics, casting light on both long-standing and emerging causes of death. Our intent is not to pinpoint direct causality but rather to contextualize these trends within the broader panorama of Alberta's dynamic public health landscape.
+
+This endeavor goes beyond the superficial examination of statistics. It seeks to unravel the intricate tapestry of factors that dictate mortality trends, such as the shifting demographics of an aging population, the variable tide of health-related behaviors, and the silent encroachment of environmental changes. By synthesizing data on mortality causes, this paper aims to contribute a nuanced analysis that could potentially steer the province's healthcare policies towards more informed and strategic directions. It is within this framework that we lay the foundation for a quantitative assessment, poised to uncover the undercurrents that shape the health outcomes of Alberta's populace.
 
 # Data {#sec-data}
 
