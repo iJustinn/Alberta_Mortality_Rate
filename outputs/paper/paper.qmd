@@ -19,7 +19,7 @@ bibliography: references.bib
 #| echo: false
 
 # load packages
-packages <- c("tidyverse", "boot", "broom.mixed", "collapse", "dataverse", "gutenbergr", "janitor", "knitr", "marginaleffects", "modelsummary", "rstanarm")
+packages <- c("tidyverse", "boot", "broom.mixed", "collapse", "dataverse", "gutenbergr", "janitor", "knitr", "marginaleffects", "modelsummary", "rstanarm", "tidybayes")
 
 # Function to check and install missing packages
 install_and_load <- function(packages) {
@@ -41,12 +41,14 @@ install_and_load(packages)
 
 # read in data
 file_path_0 <- "../../inputs/data/raw_data.csv"
-file_path_1 <- "../../outputs/data/filtered_data.csv"
-file_path_2 <- "../../outputs/data/cleaned_data.csv"
+file_path_1 <- "../../outputs/data/cleaned_data.csv"
+file_path_2 <- "../../outputs/data/top_5_cause_data.csv"
+file_path_3 <- "../../outputs/data/summarized_top_5_cause_data.csv"
 
 raw_data <- read_csv(file_path_0, show_col_types = FALSE)
-filtered_data <- read_csv(file_path_1, show_col_types = FALSE)
-cleaned_data <- read_csv(file_path_2, show_col_types = FALSE)
+cleaned_data <- read_csv(file_path_1, show_col_types = FALSE)
+top_5_cause_data <- read_csv(file_path_2, show_col_types = FALSE)
+summarized_top_5_cause_data <- read_csv(file_path_3, show_col_types = FALSE)
 ```
 
 
@@ -57,7 +59,7 @@ Alberta, a province known for its vibrant culture and dynamic economy, faces ong
 
 # Data {#sec-data}
 
-Data used in this paper was cleaned and processed with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `readr` [@citeReadr], `knitr` [@citeKnitr], `rstanarm` [@citeRstanarm], `modelsummary` [@citeModelsummary].
+Data used in this paper was cleaned and processed with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `readr` [@citeReadr], `knitr` [@citeKnitr], `rstanarm` [@citeRstanarm], `modelsummary` [@citeModelsummary], `tidybayes` [@citeTidybayes].
 
 ## Source
 
@@ -105,7 +107,7 @@ Building on the refined dataset, our analysis further narrowed to investigate th
 cause_of_death_alberta_poisson <-
   stan_glm(
     total_deaths ~ cause,
-    data = filtered_data,
+    data = top_5_cause_data,
     family = poisson(link = "log"),
     seed = 123
   )
@@ -114,7 +116,7 @@ cause_of_death_alberta_poisson <-
 cause_of_death_alberta_neg_binomial <-
   stan_glm(
     total_deaths ~ cause,
-    data = filtered_data,
+    data = top_5_cause_data,
     family = neg_binomial_2(link = "log"),
     seed = 123
   )
@@ -128,24 +130,38 @@ cause_of_death_alberta_neg_binomial <-
 #| echo: false
 #| warning: false
 #| fig-pos: 'h'
-#| label: fig-result
-#| fig-cap: Trend for Top 5 Causes
+#| label: fig-trends
+#| fig-cap: Trend for Alberta Mortality
+#| fig-subcap: ["Top 5 Causes","Sum of Causes"]
+#| layout-ncol: 2
+#| layout-nrow: 1
 
-filtered_data |>
+top_5_cause_data |>
   ggplot(aes(x = calendar_year, y = total_deaths, color = cause)) +
   geom_line() +
   theme_minimal() +
   scale_color_brewer(palette = "Set1") +
-  labs(x = "Year", y = "Annual number of deaths in Alberta") +
+  labs(x = "Year", y = "Annual Number of deaths in Alberta") +
   facet_wrap(vars(cause), dir = "v", ncol = 1) +
   theme(legend.position = "none",
         axis.text.y = element_text(size = rel(0.7)))
 
+summarized_top_5_cause_data |>
+  ggplot(aes(x = calendar_year, y = sum_deaths)) +
+  geom_line() +
+  theme_minimal() +
+  scale_x_continuous(breaks = unique(summarized_top_5_cause_data$calendar_year)) +
+  labs(x = "Year", y = "Sum of Annual Number of Deaths in Alberta") +
+  theme(legend.position = "none",
+        axis.text.x = element_text(size = rel(0.7)))
+
 ```
 
-Results in the @fig-result displays the annual number of deaths in Alberta for the top five causes in 2019 unveils distinct trends for each cause over approximately two decades. The data suggest a relatively stable trend in deaths from acute myocardial infarction, with a small rise that may indicate a steady prevalence of risk factors or an equilibrium between advancing medical interventions and demographic shifts. Conversely, the increasing trajectory seen in deaths due to chronic diseases points to a potential escalation in lifestyle-related health issues or could reflect the demographic realities of an aging population.
+Results in the @fig-trends-1 displays the annual number of deaths in Alberta for the top five causes in 2019 unveils distinct trends for each cause over approximately two decades. The data suggest a relatively stable trend in deaths from acute myocardial infarction, with a small rise that may indicate a steady prevalence of risk factors or an equilibrium between advancing medical interventions and demographic shifts. Conversely, the increasing trajectory seen in deaths due to chronic diseases points to a potential escalation in lifestyle-related health issues or could reflect the demographic realities of an aging population.
 
 Particularly notable is the sharp increase in deaths attributed to organic dementia, surging upwards more markedly in the latter half of the time span. This trend could signify heightened awareness and improved diagnostic capabilities, alongside the impact of an aging society. Meanwhile, deaths from malignant neoplasms related to the respiratory system display minor fluctuations, hinting at persistent challenges in cancer prevention, detection, and treatment. The upward trend in chronic obstructive pulmonary disease-related mortality could be linked to environmental factors or historic smoking patterns, underscoring the pressing need for robust public health policies and effective healthcare strategies.
+
+The graph presented in @fig-trends-2 illustrates a clear upward trajectory in the total number of deaths from 2001 to 2022. This trend, while indicative of a rising mortality rate, necessitates a nuanced interpretation. The increasing death toll may not necessarily be attributed to the lethality or prevalence of specific causes alone. Instead, it potentially reflects broader demographic changes, such as the growth of the overall population, particularly within older age groups who are statistically more vulnerable to various health-related fatalities.
 
 ## Modeling
 
@@ -179,46 +195,62 @@ modelsummary(
 
 Then the @tbl-summary summarizes the coefficients of both models built to fit the mortality trend in Alberta, offering a comparison of their estimations for the top causes of mortality. In both models, "other chronic" conditions and "neoplasms" exhibit positive coefficients, suggesting these causes of death have an increasing trend over time. Meanwhile, "obstructive pulmonary" diseases show a negative relationship in both models, indicating a decreasing trend in mortality rates. The consistency across both models reinforces the reliability of our findings.
 
-As depicted by the graphs for the Poisson (@fig-poisson_model) and negative binomial models (@fig-negative_binomial_model), the diagnostic plots further elucidate the model fits. The negative binomial model, appears to capture the dispersion in the data more effectively than the Poisson model, which is evident in two plots. The spread of the simulated lines (y_rep) around the observed data (y) suggests that the negative binomial model may accommodate the overdispersion present in the data, which is a common characteristic in count data such as mortality rates.
+For the Poisson model, the expected log count is defined as:
 
-The presence of multiple peaks in the second plot's simulated data distributions indicates potential subgroups within the data or non-linearity in the mortality trends that the Poisson model may not be accounting for. Such patterns underscore the importance of considering different model structures when dealing with complex datasets. These graphical diagnostics not only affirm the adequacy of the negative binomial model over the Poisson model for this particular dataset but also highlight the necessity of thorough model checking in the process of statistical analysis.
+$$
+\log(\mu_i) = \beta_0 + 0.447 \times (\text{other chronic})_i + 0.223 \times (\text{neoplasms})_i + 0.046 \times (\text{dementia})_i -
+$$
+$$
+0.205 \times (\text{obstructive pulmonary})_i
+$$
+
+For the Negative Binomial model, the expected log count is defined as:
+
+$$
+\log(\mu_i) = \beta_0 + 0.449 \times (\text{other chronic})_i + 0.226 \times (\text{neoplasms})_i + 0.048 \times (\text{dementia})_i -
+$$
+$$
+0.203 \times (\text{obstructive pulmonary})_i
+$$
 
 ```{r}
 #| message: false
 #| echo: false
 #| warning: false
 #| fig-pos: 'h'
-#| label: fig-poisson_model
-#| fig-cap: Poisson Model
+#| label: fig-models
+#| fig-cap: Model Results
+#| fig-subcap: ["Poisson Model","Negative Binomial Model"]
+#| layout-ncol: 2
+#| layout-nrow: 1
 
 pp_check(cause_of_death_alberta_poisson) +
   theme(legend.position = "bottom")
-
-```
-
-```{r}
-#| message: false
-#| echo: false
-#| warning: false
-#| fig-pos: 'h'
-#| label: fig-negative_binomial_model
-#| fig-cap: Negative Binomial Model
 
 pp_check(cause_of_death_alberta_neg_binomial) +
   theme(legend.position = "bottom")
 
 ```
 
+Then to see how good two models fits the original data. We can reffer to the values in the lower half of @tbl-summary, but it's always more clear to see the visual, as depicted by the graphs for the Poisson (@fig-models-1) and negative binomial models (@fig-models-2), the diagnostic plots further elucidate the model fits. The negative binomial model, appears to capture the dispersion in the data more effectively than the Poisson model, which is evident in two plots. The spread of the simulated lines (y_rep) around the observed data (y) suggests that the negative binomial model may accommodate the overdispersion present in the data, which is a common characteristic in count data such as mortality rates.
+
+The presence of multiple peaks in the second plot's simulated data distributions indicates potential subgroups within the data or non-linearity in the mortality trends that the Poisson model may not be accounting for. Such patterns underscore the importance of considering different model structures when dealing with complex datasets. These graphical diagnostics not only affirm the adequacy of the negative binomial model over the Poisson model for this particular dataset but also highlight the necessity of thorough model checking in the process of statistical analysis.
+
 # Discussion
 
+The preceding sections have laid the groundwork for a comprehensive analysis of mortality trends in Alberta, paving the way for this discussion. The application of Poisson and Negative Binomial models to the data has illuminated key trends and has provided quantitative support to the qualitative observations made earlier. The positive coefficients for "other chronic" and "neoplasms" in both models suggest that deaths from these causes have steadily increased, raising questions about the broader factors at play beyond the healthcare system's direct influence. Simultaneously, the negative coefficient for "obstructive pulmonary" diseases suggests a decline in mortality from these conditions, potentially reflecting successful public health initiatives and changing social habits, such as reduced smoking rates.
 
+However, the increasing overall mortality trend signals a need to consider demographic shifts, such as population growth and aging, as significant contributors to the observed patterns. The spike in deaths from 2020 onwards aligns with the onset of the COVID-19 pandemic, underscoring the substantial impact of infectious disease outbreaks on mortality statistics. This outlier emphasizes the importance of having robust health surveillance systems that can adapt to sudden changes in public health landscapes.
+
+Furthermore, the diagnostic plots from both models underscore the necessity for careful selection of appropriate statistical methods when modeling complex health data. The better fit of the Negative Binomial model compared to the Poisson model, as indicated by the diagnostic checks, suggests that overdispersion—a common feature in count data—must be accounted for to avoid underestimating the variability in the data.
+
+The limitations of the current study also warrant discussion. While the models applied provide valuable insights, they do not capture all the nuances of the data. Future research could explore the inclusion of additional variables, such as economic indicators, healthcare access measures, and lifestyle factors, to better understand the determinants of mortality. Moreover, the investigation of interactions between causes of death and demographic variables could yield a more granular understanding of the dynamics at play.
+
+Ultimately, this study serves as a call to action for ongoing surveillance, research, and a proactive approach to public health planning. By continuing to refine our models and expand our datasets, we can better anticipate and mitigate the factors contributing to mortality, striving for a healthier future for all Albertans.
 
 # Conclusion
 
-
-
-
-
+In conclusion, our exploration of mortality trends in Alberta has provided a statistical narration of the province's public health status over the past two decades. We have identified critical causes of death and trends that warrant attention from both healthcare providers and policymakers. The analysis has also emphasized the significance of employing appropriate statistical models to accurately represent and understand complex health data. As we move forward, it is imperative to integrate these findings into a strategic framework that enhances Alberta's health system responsiveness and effectiveness in the face of demographic and epidemiological shifts. Through vigilance and informed action, we can aim to influence these mortality trends positively, enhancing the health and well-being of the Alberta population.
 
 \newpage
 
