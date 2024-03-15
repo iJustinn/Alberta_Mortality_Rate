@@ -1,6 +1,6 @@
 ---
-title: "Modeling Mortality Trends in Alberta"
-subtitle: "A Quantitative Approach to Public Health Dynamics"
+title: "Deciphering Mortality in Alberta: A Multifaceted Analysis"
+subtitle: "A Quantitative Approach on Demographics, Behaviors, Policies, and Environment"
 author: 
   - Ziheng Zhong
 thanks: "Code and data are available at: https://github.com/iJustinn/Alberta_Mortality_Rate.git"
