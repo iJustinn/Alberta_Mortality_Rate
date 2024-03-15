@@ -55,8 +55,6 @@ summarized_top_5_cause_data <- read_csv(file_path_3, show_col_types = FALSE)
 
 # Introduction
 
-# Introduction
-
 Alberta, often celebrated for its vibrant culture and robust economy, grapples with the complexities of public health challenges that reverberate across its diverse population. In the face of these challenges, mortality rates emerge as a telling metric, offering insights into the health outcomes shaped by an interwoven fabric of socioeconomic conditions, environmental factors, and healthcare system efficacy. The significance of these mortality rates transcends mere numbers; they mirror the collective well-being of the community and serve as a barometer for the effectiveness of public health policies and interventions.
 
 The exploration of mortality trends within this province is not merely an academic exercise; it is an imperative assessment in an era where healthcare systems worldwide are continually tested by emerging threats and chronic conditions alike. As such, this paper endeavors to dissect the evolving narrative of Alberta's mortality statistics, casting light on both long-standing and emerging causes of death. Our intent is not to pinpoint direct causality but rather to contextualize these trends within the broader panorama of Alberta's dynamic public health landscape.
