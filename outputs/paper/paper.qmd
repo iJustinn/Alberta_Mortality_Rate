@@ -6,7 +6,7 @@ author:
 thanks: "Code and data are available at: https://github.com/iJustinn/Alberta_Mortality_Rate.git"
 date: today
 date-format: long
-abstract: "This study is focusing on the mortality trends in Alberta, with an emphasis on understanding the broader public health implications. This study offers a panoramic view of the health challenges and demographic shifts influencing the mortality rates in the province. The findings highlight an increase in mortality over recent years, with implications that extend beyond individual health conditions to encompass wider societal and environmental factors. The paper underscores the importance of data-driven approaches in shaping effective public health strategies and policies."
+abstract: "This study focuses on the mortality trends in Alberta, emphasizing the broader public health implications. It offers a panoramic view of the health challenges and demographic shifts influencing the province's mortality rates. The findings highlight an increase in mortality in recent years, with implications extending beyond individual health conditions to encompass wider societal and environmental factors. This paper underscores the importance of data-driven approaches in shaping effective public health strategies and policies."
 format: pdf
 toc: true
 toc-depth: 3
@@ -19,7 +19,7 @@ bibliography: references.bib
 #| echo: false
 
 # load packages
-packages <- c("tidyverse", "boot", "broom.mixed", "collapse", "dataverse", "gutenbergr", "janitor", "knitr", "marginaleffects", "modelsummary", "rstanarm", "tidybayes")
+packages <- c("tidyverse", "boot", "broom.mixed", "collapse", "dataverse", "gutenbergr", "janitor", "knitr", "marginaleffects", "modelsummary", "rstanarm", "tidybayes", "loo")
 
 # Function to check and install missing packages
 install_and_load <- function(packages) {
@@ -51,27 +51,27 @@ top_5_cause_data <- read_csv(file_path_2, show_col_types = FALSE)
 summarized_top_5_cause_data <- read_csv(file_path_3, show_col_types = FALSE)
 ```
 
-
-
 # Introduction
 
-Alberta, often celebrated for its vibrant culture and robust economy, grapples with the complexities of public health challenges that reverberate across its diverse population. In the face of these challenges, mortality rates emerge as a telling metric, offering insights into the health outcomes shaped by an interwoven fabric of socioeconomic conditions, environmental factors, and healthcare system efficacy. The significance of these mortality rates transcends mere numbers; they mirror the collective well-being of the community and serve as a barometer for the effectiveness of public health policies and interventions.
+Alberta, celebrated for its vibrant culture and robust economy, faces public health challenges that impact its diverse population. Mortality rates, as a key metric of economic level [@citeMortalityEconomy], influenced by a complex mix of socioeconomic conditions, environmental factors, and healthcare system performance. These rates reflect the community's collective well-being and gauge the effectiveness of public health policies and interventions.
 
-The exploration of mortality trends within this province is not merely an academic exercise; it is an imperative assessment in an era where healthcare systems worldwide are continually tested by emerging threats and chronic conditions alike. As such, this paper endeavors to dissect the evolving narrative of Alberta's mortality statistics, casting light on both long-standing and emerging causes of death. Our intent is not to pinpoint direct causality but rather to contextualize these trends within the broader panorama of Alberta's dynamic public health landscape.
+Exploring mortality trends in Alberta is crucial, given the global healthcare challenges posed by new threats and chronic conditions. This paper aims to analyze Alberta's mortality statistics, highlighting both longstanding and emerging causes of death. Our goal is to understand these trends within Alberta's dynamic public health context, rather than pinpoint direct causality.
 
-This endeavor goes beyond the superficial examination of statistics. It seeks to unravel the intricate tapestry of factors that dictate mortality trends, such as the shifting demographics of an aging population, the variable tide of health-related behaviors, and the silent encroachment of environmental changes. By synthesizing data on mortality causes, this paper aims to contribute a nuanced analysis that could potentially steer the province's healthcare policies towards more informed and strategic directions. It is within this framework that we lay the foundation for a quantitative assessment, poised to uncover the undercurrents that shape the health outcomes of Alberta's populace.
+Our analysis delves into the factors influencing mortality rates, including demographic shifts, health-related behaviors [@citeBehavCause], government policies [@citeEconCause], and environmental changes [@citeEnvCause]. By examining data on mortality causes, we aim to offer a nuanced perspective that could guide the province's healthcare policy towards more informed and strategic decisions. This study sets the stage for a quantitative assessment, seeking to reveal the underlying forces shaping health outcomes in Alberta.
+
+The subsequent sections of this paper are organized to facilitate a comprehensive understanding of the study and its implications. After this introduction, @sec-data outlines the methodology used in the analysis, emphasizing transparency and replicability. @sec-res presents the findings in detail, charting the trends in Alberta's mortality. @sec-dis discusses these findings from various perspectives as mentioned earlier. Finally, @sec-con concludes the paper, summarizing the key insights and findings of this research.
 
 # Data {#sec-data}
 
-Data used in this paper was cleaned and processed with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `readr` [@citeReadr], `knitr` [@citeKnitr], `rstanarm` [@citeRstanarm], `modelsummary` [@citeModelsummary], `tidybayes` [@citeTidybayes].
+Data used in this paper was cleaned and processed with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `readr` [@citeReadr], `knitr` [@citeKnitr], `rstanarm` [@citeRstanarm], `modelsummary` [@citeModelsummary], `tidybayes` [@citeTidybayes], `loo` [@citeLoo].
 
 ## Source
 
-In the pursuit of understanding and modeling mortality trends within Alberta, our study primarily utilizes the "Leading Causes of Death" dataset made available by the Alberta Open Government Portal. This comprehensive data source offers an extensive overview of mortality statistics across the province, categorized by various causes of death. The Alberta Open Government Portal, a key initiative for promoting transparency and public engagement, hosts this dataset at open.alberta.ca [@citeDatasource], providing open access to valuable health-related data.
+Our study delves into Alberta's mortality trends using the "Leading Causes of Death" dataset from the Alberta Open Government Portal [@citeDatasource]. This dataset provides a comprehensive overview of mortality statistics throughout the province, organized by cause of death. As a cornerstone of transparency and public engagement, the Alberta Open Government Portal hosts this dataset at open.alberta.ca, offering open access to crucial health data.
 
-The "Leading Causes of Death" dataset encompasses a detailed compilation of death counts and mortality rates spanning multiple years. It includes categorizations by age, sex, and specific causes of death, ranging from chronic diseases to accidents and emergent health threats. This granularity allows for a nuanced analysis of mortality trends, facilitating the identification of prevalent health issues and potential public health interventions.
+The dataset includes detailed death counts and mortality rates over several years, with breakdowns by age, sex, and specific causes, from chronic diseases to accidents and new health threats. This detail enables a nuanced analysis of mortality trends and the identification of key health challenges, guiding potential public health interventions.
 
-The selection of this data source was driven by its credibility, comprehensiveness, and relevance to our research objectives. Being an official government resource, the dataset ensures reliability and accuracy, crucial for the validity of our analytical models. The dataset's extensive coverage of demographic and cause-specific mortality information enables a thorough exploration of the factors influencing mortality rates in Alberta. Furthermore, the data's organization and accessibility significantly aid in the efficient processing and modeling of mortality trends.
+We selected this dataset for its reliability, depth, and alignment with our study's goals. As an official government source, it provides accurate and trustworthy data essential for our analysis. Its comprehensive demographic and cause-specific details allow for an in-depth examination of mortality influences in Alberta. Additionally, the dataset's structure supports efficient analysis and modeling of mortality trends.
 
 ## Method
 
@@ -102,7 +102,9 @@ Our analysis commenced with the essential task of refining the raw dataset. The 
 
 Building on the refined dataset, our analysis further narrowed to investigate the top 5 causes of mortality in 2019. This deliberate focus allowed us to concentrate our efforts on the most impactful health challenges faced by Alberta before the pandemic. We applied statistical models to fit these mortality trends, seeking to identify underlying patterns and determinants. This approach was aimed at uncovering insights that could inform public health strategies and interventions, contributing to a more nuanced understanding of mortality dynamics in the province.
 
-# Results
+The choice of models for our analysis was the Poisson and Negative Binomial. These models are particularly suited for mortality data analysis, aligning well with the characteristics of count data. Mortality counts, which represent the number of deaths over specific periods, naturally follow the discrete distribution assumed by the Poisson model. This model assumes equal mean and variance, a condition that typically applies to independent events occurring at a constant rate. The Poisson model is valued for the interpretability of its parameters; its exponential coefficients reflect the change in mortality rate per unit change in a predictor, providing clear insights into factors influencing mortality rates. This clarity is crucial for deriving actionable insights from the data. However, mortality data often exhibit overdispersion—where the variance exceeds the mean—challenging the Poisson model’s assumption. The Negative Binomial model addresses this by introducing an extra parameter to handle overdispersion, making it a more adaptable choice for analyzing data with greater variability.
+
+# Results {#sec-res}
 
 ```{r}
 #| include: false
@@ -134,11 +136,8 @@ cause_of_death_alberta_neg_binomial <-
 #| echo: false
 #| warning: false
 #| fig-pos: 'h'
-#| label: fig-trends
-#| fig-cap: Trend for Alberta Mortality
-#| fig-subcap: ["Top 5 Causes","Sum of Causes"]
-#| layout-ncol: 2
-#| layout-nrow: 1
+#| label: fig-trends-1
+#| fig-cap: Trend for Alberta Mortality-Top 5 Causes
 
 top_5_cause_data |>
   ggplot(aes(x = calendar_year, y = total_deaths, color = cause)) +
@@ -149,6 +148,16 @@ top_5_cause_data |>
   facet_wrap(vars(cause), dir = "v", ncol = 1) +
   theme(legend.position = "none",
         axis.text.y = element_text(size = rel(0.7)))
+
+```
+
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-pos: 'h'
+#| label: fig-trends-2
+#| fig-cap: Trend for Alberta Mortality-Sum of Causes
 
 summarized_top_5_cause_data |>
   ggplot(aes(x = calendar_year, y = sum_deaths)) +
@@ -199,6 +208,8 @@ modelsummary(
 
 Then the @tbl-summary summarizes the coefficients of both models built to fit the mortality trend in Alberta, offering a comparison of their estimations for the top causes of mortality. In both models, "other chronic" conditions and "neoplasms" exhibit positive coefficients, suggesting these causes of death have an increasing trend over time. Meanwhile, "obstructive pulmonary" diseases show a negative relationship in both models, indicating a decreasing trend in mortality rates. The consistency across both models reinforces the reliability of our findings.
 
+\newpage
+
 For the Poisson model, the expected log count is defined as:
 
 $$
@@ -236,25 +247,58 @@ pp_check(cause_of_death_alberta_neg_binomial) +
 
 ```
 
-Then to see how good two models fits the original data. We can reffer to the values in the lower half of @tbl-summary, but it's always more clear to see the visual, as depicted by the graphs for the Poisson (@fig-models-1) and negative binomial models (@fig-models-2), the diagnostic plots further elucidate the model fits. The negative binomial model, appears to capture the dispersion in the data more effectively than the Poisson model, which is evident in two plots. The spread of the simulated lines (y_rep) around the observed data (y) suggests that the negative binomial model may accommodate the overdispersion present in the data, which is a common characteristic in count data such as mortality rates.
+Then, to see how well the two models fit the original data, we can refer to the values in the lower half of @tbl-summary. However, it's always clearer to see this visually, as depicted by the graphs for the Poisson (@fig-models-1) and Negative Binomial models (@fig-models-2). The diagnostic plots further elucidate the fits of the models. The spread of the simulated lines (y_rep) around the predicted data (y) suggests that the Negative Binomial model may better accommodate the overdispersion present in the data, which is a common characteristic of count data such as mortality rates.
 
-The presence of multiple peaks in the second plot's simulated data distributions indicates potential subgroups within the data or non-linearity in the mortality trends that the Poisson model may not be accounting for. Such patterns underscore the importance of considering different model structures when dealing with complex datasets. These graphical diagnostics not only affirm the adequacy of the negative binomial model over the Poisson model for this particular dataset but also highlight the necessity of thorough model checking in the process of statistical analysis.
+The presence of multiple peaks in the simulated data distributions of @fig-models-2 indicates potential subgroups within the data or non-linearity in the mortality trends that the Poisson model may not be accounting for. Such patterns underscore the importance of considering different model structures when dealing with complex datasets. The Negative Binomial model appears to capture the dispersion in the data more effectively than the Poisson model. This not only evident in the plots, but also by the larger ELPD (Expected Log Pointwise Predictive Density) value showing in @tbl-cross_validation, as a higher ELPD indicates a model with better predictive accuracy. Furthermore, this better prediction by the Negative Binomial model was consistent with the predictions for the two models mentioned in the method section of @sec-data.
 
-# Discussion
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-pos: 'h'
+#| label: tbl-cross_validation
+#| tbl-cap: cross validation of modeling
 
-The preceding sections have laid the groundwork for a comprehensive analysis of mortality trends in Alberta, paving the way for this discussion. The application of Poisson and Negative Binomial models to the data has illuminated key trends and has provided quantitative support to the qualitative observations made earlier. The positive coefficients for "other chronic" and "neoplasms" in both models suggest that deaths from these causes have steadily increased, raising questions about the broader factors at play beyond the healthcare system's direct influence. Simultaneously, the negative coefficient for "obstructive pulmonary" diseases suggests a decline in mortality from these conditions, potentially reflecting successful public health initiatives and changing social habits, such as reduced smoking rates.
+options(mc.cores = 2)
 
-However, the increasing overall mortality trend signals a need to consider demographic shifts, such as population growth and aging, as significant contributors to the observed patterns. The spike in deaths from 2020 onwards aligns with the onset of the COVID-19 pandemic, underscoring the substantial impact of infectious disease outbreaks on mortality statistics. This outlier emphasizes the importance of having robust health surveillance systems that can adapt to sudden changes in public health landscapes.
+poisson <- loo(cause_of_death_alberta_poisson, cores = 2)
+neg_binomial <- loo(cause_of_death_alberta_neg_binomial, cores = 2)
 
-Furthermore, the diagnostic plots from both models underscore the necessity for careful selection of appropriate statistical methods when modeling complex health data. The better fit of the Negative Binomial model compared to the Poisson model, as indicated by the diagnostic checks, suggests that overdispersion—a common feature in count data—must be accounted for to avoid underestimating the variability in the data.
+loo_compare(poisson, neg_binomial)
+```
 
-The limitations of the current study also warrant discussion. While the models applied provide valuable insights, they do not capture all the nuances of the data. Future research could explore the inclusion of additional variables, such as economic indicators, healthcare access measures, and lifestyle factors, to better understand the determinants of mortality. Moreover, the investigation of interactions between causes of death and demographic variables could yield a more granular understanding of the dynamics at play.
+# Discussion {#sec-dis}
 
-Ultimately, this study serves as a call to action for ongoing surveillance, research, and a proactive approach to public health planning. By continuing to refine our models and expand our datasets, we can better anticipate and mitigate the factors contributing to mortality, striving for a healthier future for all Albertans.
+The preceding sections have laid the groundwork for a comprehensive analysis of mortality trends in Alberta, paving the way for this discussion.
 
-# Conclusion
+## Demographic Shifts
 
-In conclusion, our exploration of mortality trends in Alberta has provided a statistical narration of the province's public health status over the past two decades. We have identified critical causes of death and trends that warrant attention from both healthcare providers and policymakers. The analysis has also emphasized the significance of employing appropriate statistical models to accurately represent and understand complex health data. As we move forward, it is imperative to integrate these findings into a strategic framework that enhances Alberta's health system responsiveness and effectiveness in the face of demographic and epidemiological shifts. Through vigilance and informed action, we can aim to influence these mortality trends positively, enhancing the health and well-being of the Alberta population.
+Alberta's demographic landscape has been undergoing significant transformations, predominantly fueled by a steady influx of immigrants from within Canada and across the globe [@citeAlbertaDemog]. This diversification of the population not only enriches the province's cultural fabric but also introduces complex dynamics in public health management. Immigrants, adapting to a new environment, might face unique health challenges including climate-related discomfort and exposure to diseases not prevalent in their countries of origin. These factors, coupled with the stressors associated with resettlement, could potentially influence mortality rates in ways that are distinct from the native population.
+
+The demographic shift towards a more diverse population composition also brings into focus the aging demographic. As the overall population grows, so does the proportion of elderly residents, a group inherently at higher risk of mortality due to chronic diseases and other age-related health issues. This aging demographic, compounded by the province's overall population growth, naturally leads to an increase in the number of deaths. However, interpreting these rising death tolls requires careful consideration of the expanding population base [@citeAlbertaPop]; a larger population inherently includes more individuals at risk of mortality, thereby elevating the absolute number of deaths even if the mortality rate (deaths per capita) remains constant or decreases.
+
+## Health-related Behaviors
+
+Health-related behaviors, encompassing lifestyle choices such as diet, physical activity, smoking, and alcohol consumption, significantly influence mortality trends in Alberta. These behaviors, often rooted in socio-economic conditions, cultural norms, and individual psychology, have a profound impact on the prevalence and progression of chronic diseases, including heart disease, diabetes, and various forms of cancer. For instance, the high prevalence of sedentary lifestyles coupled with increasing consumption of processed foods contributes to obesity and related health complications, which can elevate mortality rates. Smoking and excessive alcohol consumption continue to be major risk factors for respiratory diseases [@citeBehavCause], liver conditions, and cancers, despite public health campaigns aimed at curbing these behaviors.
+
+Refer back to @tbl-summary, the positive coefficients for "other chronic" and "neoplasms" in both models suggest that deaths from these causes have steadily increased, raising questions about the broader factors at play beyond the healthcare system's direct influence. Simultaneously, the negative coefficient for "obstructive pulmonary" diseases suggests a decline in mortality from these conditions, potentially reflecting successful public health initiatives and changing social habits, such as reduced smoking rates.
+
+## Government Policies
+
+Government policies, particularly those related to austerity measures, play a significant role in shaping public health outcomes and mortality rates [@citeEconCause]. Austerity policies, which are often implemented to reduce government debt through spending cuts and increased taxes, can have far-reaching effects on the social determinants of health. For instance, reductions in funding for public healthcare services can limit access to preventive care, screenings, and treatment for chronic diseases, potentially leading to an increase in mortality rates. Additionally, austerity measures that result in cuts to social services can exacerbate poverty, unemployment, and housing instability, further impacting individuals' health and well-being.
+
+In Alberta, where public health policy can significantly influence healthcare delivery and social welfare programs, the implementation of austerity measures may pose challenges to achieving optimal health outcomes. Although there was no implimentation of austerity policies recent years, some past implementation has already proven to have a significant negative impact on society [@citeAusterity]. The relationship between such policies and mortality underscores the need for careful consideration of the health impacts of fiscal decisions. Policymakers must balance budgetary constraints with the imperative to protect and enhance public health, ensuring that austerity measures do not disproportionately harm vulnerable populations or erode the quality of healthcare services.
+
+## Environmental Changes
+
+Environmental changes in Alberta, ranging from air and water pollution to climate variability and extreme weather events, significantly influence public health and mortality trends. The province, known for its diverse landscapes and economic reliance on industries such as oil and gas, agriculture, and forestry, faces unique environmental challenges that directly impact the health of its residents. Air pollution [@citeAirPollu]
+, resulting from industrial activities and urban traffic, is linked to respiratory diseases, cardiovascular conditions, and increased mortality rates. Industrial waste issues [@citeFactoryPollu], such as sand and water, can leading to health complications and diseases. Besides, even seemingly insignificant temperature changes in living environments can have an impact on human health [@citeEnvCause], and such changes are mainly attributed to global warming.
+
+# Conclusion {#sec-con}
+
+In conclusion, our examination of Alberta's mortality trends over the last two decades has shed light on the province's public health landscape. We've pinpointed key causes of death and trends that demand attention from healthcare providers and policymakers. Our work underscores the necessity of using suitable statistical models to grasp complex health data accurately.
+
+Our study reveals the diverse factors affecting public health in Alberta, including demographic changes, health behaviors, government policies, and environmental challenges. The influx of immigrants has significantly shifted Alberta's demographic makeup, bringing new health issues and diversifying healthcare needs. Lifestyle factors, such as diet, physical activity, and substance use, significantly influence health outcomes, highlighting the importance of targeted public health initiatives. Moreover, government policies and environmental factors, like pollution and climate change, present ongoing challenges to public health.
 
 \newpage
 
