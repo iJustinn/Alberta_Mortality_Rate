@@ -45,7 +45,7 @@ cleaned_data |>
 
 
 
-#### filtering needed data ####
+#### top 5 data ####
 top_five <-
   cleaned_data |>
   filter(
@@ -54,9 +54,17 @@ top_five <-
   slice_max(order_by = desc(ranking), n = 5) |>
   pull(cause)
 
-filtered_data <-
+top_5_cause_data <-
   cleaned_data |>
   filter(cause %in% top_five)
+
+
+
+#### summarize top 5 data ####
+summarized_top_5_cause_data <- top_5_cause_data %>%
+  group_by(calendar_year) %>%
+  summarize(sum_deaths = sum(total_deaths, na.rm = TRUE)) %>%
+  ungroup()
 
 
 
@@ -67,8 +75,12 @@ write_csv(
 )
 
 write_csv(
-  x = filtered_data,
-  file = "outputs/data/filtered_data.csv"
+  x = top_5_cause_data,
+  file = "outputs/data/top_5_cause_data.csv"
 )
 
+write_csv(
+  x = summarized_top_5_cause_data,
+  file = "outputs/data/summarized_top_5_cause_data.csv"
+)
 
