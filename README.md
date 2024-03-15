@@ -1,10 +1,10 @@
 # Alberta_Mortality_Rate
 
-
+This study is focusing on the mortality trends in Alberta, with an emphasis on understanding the broader public health implications.
 
 ## Paper Overview
 
-
+By using the data from [open.alberta.ca](https://open.alberta.ca/opendata/leading-causes-of-death), this study offers a panoramic view of the health challenges and demographic shifts influencing the mortality rates in the province. The findings highlight an increase in mortality over recent years, with implications that extend beyond individual health conditions to encompass wider societal and environmental factors. The paper underscores the importance of data-driven approaches in shaping effective public health strategies and policies. The comprehensive analysis was conducted using `R` programming and is presented as a final research paper in `PDF` format.
 
 ## File Structure
 
