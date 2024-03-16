@@ -63,7 +63,7 @@ The subsequent sections of this paper are organized to facilitate a comprehensiv
 
 # Data {#sec-data}
 
-Data used in this paper was cleaned and processed with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `readr` [@citeReadr], `knitr` [@citeKnitr], `rstanarm` [@citeRstanarm], `modelsummary` [@citeModelsummary], `tidybayes` [@citeTidybayes], `loo` [@citeLoo].
+Data used in this paper was cleaned, processed and tested with the programming language R [@citeR]. Also with support of additional packages in R: `tidyverse` [@citeTidyverse], `ggplot2` [@citeGgplot], `janitor` [@citeJanitor], `readr` [@citeReadr], `knitr` [@citeKnitr], `rstanarm` [@citeRstanarm], `modelsummary` [@citeModelsummary], `tidybayes` [@citeTidybayes], `loo` [@citeLoo], `testthat` [@citeTestthat].
 
 ## Source
 
