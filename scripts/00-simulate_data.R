@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: 
+# Purpose: This code creates simulated mortality data by cause over years, and visualizes this data with a ggplot chart that includes points for each data entry and a linear trend line, all within a minimalistic theme.
 # Author: Ziheng Zhong
 # Date: 10 March 2024
 # Contact: ziheng.zhong@mail.utoronto.ca
@@ -35,5 +35,3 @@ ggplot(simulation_data, aes(x = year, y = deaths, color = cause)) +
        x = "Year",
        y = "Number of Deaths") +
   scale_x_continuous(breaks = unique(simulation_data$year))
-
-
